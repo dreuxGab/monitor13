@@ -1,0 +1,490 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "Inspecoes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "ResponsavelEmail",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Finalizada",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Vencimento",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Inspecoes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Finalizada",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Vencimento",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_INICIAL_I_II_III_DOC",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_INICIAL_IV_V_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_PERIODICA_I_II_III_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_PERIODICA_IV_V_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_EXTRAORD_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_INSTALACOES",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_VP_EX_GERAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_Time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TUB_DOC_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TUB_INSTAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TUB_EXTRAORD_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TANQUE_DOC_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TANQUE_EXTRA_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_TANQUE_INSTAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Fase_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_CALD_INICIAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_CALD_PERIODICA",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_CALDEIRA_EX_GERAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Categoria_P",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_CALD_INTAL_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LV_CALD_EXTRA_DOC",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo_inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Created_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Equipamentos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "email",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Contratos",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Equipamentos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Contrato",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "aptoRelatorio",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Planta",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Area",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Unidade",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Tipo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Inspecoes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Tipo_Inspecao",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Vencimento",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "Inspecoes",
+      "fieldPath": "Contrato",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Inspecoes",
+      "fieldPath": "Contrato",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
+}

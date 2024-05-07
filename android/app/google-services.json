@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049020221746",
+    "project_id": "monitor-13-8955ij",
+    "storage_bucket": "monitor-13-8955ij.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049020221746:android:88cc61b0dc5e175640af2b",
+        "android_client_info": {
+          "package_name": "com.mycompany.monitor13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZa4LR8-B9S5r1y-o25X_aVSnAa614LqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

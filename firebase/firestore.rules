@@ -1,0 +1,423 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /NR_VP/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Empresas/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Contratos/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Plantas/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Areas/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Unidades/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Equipamentos/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Prontuarios/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /VP_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidade_vp/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /TUB_VP_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /TUB_CALD_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /CALDEIRAS_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /TANQUES_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /OUTROS_NR/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /PERIODICIDADE_VP/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /PERIODICIDADE_CALDEIRA/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /PERIODICIDADE_TANQUE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /PERIODICIDADE_TUB_VP/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /PERIODICIDADE_TUB_CALDEIRA/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /LV_VP_INICIAL_I_II_III/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /LV_VP_INICIAL_I_II_III_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidadeTubVP/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidadeCALDS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidadeTUBCALDS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidadeTANQUES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /aplicabilidadeOUTROS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Adhocs/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /Equipamentos/{parent}/LV_VP_INICIAL_IV_V_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_INICIAL_IV_V_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_VP_PERIODICA_I_II_III_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_PERIODICA_I_II_III_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_VP_PERIODICA_IV_V_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_PERIODICA_IV_V_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_VP_EXTRAORD_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_EXTRAORD_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_VP_INSTALACOES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_INSTALACOES/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TUB_DOC_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TUB_DOC_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TUB_INSTAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TUB_INSTAL_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TUB_EXTRAORD_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TUB_EXTRAORD_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TANQUE_EXTRA_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TANQUE_EXTRA_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TANQUE_INSTAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TANQUE_INSTAL_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_TANQUE_DOC_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_TANQUE_DOC_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/Inspecoes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/Inspecoes/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_CALD_EXTRA_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_CALD_EXTRA_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_CALD_INICIAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_CALD_INICIAL_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_CALD_INTAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_CALD_INTAL_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_CALD_PERIODICA/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_CALD_PERIODICA/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_VP_EX_GERAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_VP_EX_GERAL_DOC/{document} {
+      allow read: if true;
+    }
+
+
+    match /Equipamentos/{parent}/LV_CALDEIRA_EX_GERAL_DOC/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /{path=**}/LV_CALDEIRA_EX_GERAL_DOC/{document} {
+      allow read: if true;
+    }
+
+  }
+}
