@@ -1927,9 +1927,19 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                 options: List<String>.from(
                                                     ['1', '0']),
                                                 optionLabels: ['Sim', 'Não'],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.statusDropDownOutrosValue8 =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .statusDropDownOutrosValue8 =
+                                                      val);
+                                                  setState(() {
+                                                    _model
+                                                        .statusDropDownOutrosValueController14
+                                                        ?.reset();
+                                                    _model
+                                                        .statusDropDownOutrosValueController15
+                                                        ?.reset();
+                                                  });
+                                                },
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                             .width *
