@@ -2570,15 +2570,27 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                         ].divide(SizedBox(height: 10.0)),
                                       ),
-                                      if ((_model.statusDropDownOutrosValue13 !=
-                                                  null &&
-                                              _model.statusDropDownOutrosValue13 !=
-                                                  '') ||
+                                      if (((_model
+                                                          .statusDropDownOutrosValue13 !=
+                                                      null &&
+                                                  _model.statusDropDownOutrosValue13 !=
+                                                      '') &&
+                                              (_model.statusDropDownOutrosValue14 ==
+                                                      null ||
+                                                  _model.statusDropDownOutrosValue14 ==
+                                                      '') &&
+                                              (_model
+                                                          .statusDropDownOutrosValue15 ==
+                                                      null ||
+                                                  _model.statusDropDownOutrosValue15 ==
+                                                      '')) ||
                                           ((_model.statusDropDownOutrosValue13 !=
                                                       null &&
                                                   _model.statusDropDownOutrosValue13 !=
                                                       '') &&
                                               (_model.statusDropDownOutrosValue14 ==
+                                                  '0') &&
+                                              (_model.statusDropDownOutrosValue15 ==
                                                   '0')))
                                         Text(
                                           'G1.18',
@@ -2928,109 +2940,132 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                           ),
                                           FFButtonWidget(
-                                            onPressed: () async {
-                                              await AplicabilidadeOUTROSRecord
-                                                  .collection
-                                                  .doc()
-                                                  .set(
-                                                      createAplicabilidadeOUTROSRecordData(
-                                                    codigo: 'G1.18',
-                                                    observacao: _model
-                                                        .retornoPeriodicidadeTANQUES
-                                                        ?.observacao,
-                                                    equipamento: FFAppState()
-                                                        .equipamentoAplicabilidade,
-                                                    tipoEquipamento: FFAppState()
-                                                        .tipoEquipAplicabilidade,
-                                                    descricaoEquipamento:
-                                                        FFAppState()
-                                                            .descriccaoEquipAplicabilidade,
-                                                    tagEquipamento: FFAppState()
-                                                        .tagEquipAplicabilidade,
-                                                    serieEquipamento: FFAppState()
-                                                        .serieEquipAplicabilidade,
-                                                    dataCadEquipamento: FFAppState()
-                                                        .dataCadEquipAplicabilidade,
-                                                    avaliador:
-                                                        currentUserDisplayName,
-                                                    createdTime:
-                                                        getCurrentTimestamp
-                                                            .toString(),
-                                                    contrato:
-                                                        FFAppState().contrato,
-                                                    inspecaoInterna:
-                                                        valueOrDefault<String>(
-                                                      _model
-                                                          .retornoPeriodicidadeTANQUES
-                                                          ?.observacao,
-                                                      '0',
-                                                    ),
-                                                    inspecaoExterna:
-                                                        valueOrDefault<String>(
-                                                      _model
-                                                          .retornoPeriodicidadeTANQUES
-                                                          ?.observacao,
-                                                      '0',
-                                                    ),
-                                                    recipienteTransportavel: _model
-                                                        .statusDropDownOutrosValue1,
-                                                    reservatorioPortatilFluidoComprimido:
-                                                        _model
-                                                            .statusDropDownOutrosValue2,
-                                                    extintorIncendio: _model
-                                                        .statusDropDownOutrosValue3,
-                                                    dutoSeusComponentes: _model
-                                                        .statusDropDownOutrosValue4,
-                                                    forno: _model
-                                                        .statusDropDownOutrosValue5,
-                                                    serpentinaTrocaTermica: _model
-                                                        .statusDropDownOutrosValue6,
-                                                    aquecedorFluidoTermico: '',
-                                                    geradorVapor: '',
-                                                    trocadorCalorPlacasCorrugadas:
-                                                        '',
-                                                    tuboSistemaInstrumentacao:
-                                                        '',
-                                                    acumuladorExploracaoProducaoPetroleo:
-                                                        '',
-                                                    acumuladorHidraulico: '',
-                                                    panelaCoccao: '',
-                                                    enquadradoCodigoVP: '',
-                                                    enquadradoCodigoCaldeira:
-                                                        '',
-                                                  ));
+                                            onPressed: ((_model.outrosAceitos
+                                                            .length >
+                                                        1) ||
+                                                    (_model.statusDropDownOutrosValue1 ==
+                                                            null ||
+                                                        _model.statusDropDownOutrosValue1 ==
+                                                            ''))
+                                                ? null
+                                                : () async {
+                                                    await AplicabilidadeOUTROSRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createAplicabilidadeOUTROSRecordData(
+                                                          codigo: 'G1.18',
+                                                          observacao: _model
+                                                              .retornoPeriodicidadeTANQUES
+                                                              ?.observacao,
+                                                          equipamento: FFAppState()
+                                                              .equipamentoAplicabilidade,
+                                                          tipoEquipamento:
+                                                              FFAppState()
+                                                                  .tipoEquipAplicabilidade,
+                                                          descricaoEquipamento:
+                                                              FFAppState()
+                                                                  .descriccaoEquipAplicabilidade,
+                                                          tagEquipamento:
+                                                              FFAppState()
+                                                                  .tagEquipAplicabilidade,
+                                                          serieEquipamento:
+                                                              FFAppState()
+                                                                  .serieEquipAplicabilidade,
+                                                          dataCadEquipamento:
+                                                              FFAppState()
+                                                                  .dataCadEquipAplicabilidade,
+                                                          avaliador:
+                                                              currentUserDisplayName,
+                                                          createdTime:
+                                                              getCurrentTimestamp
+                                                                  .toString(),
+                                                          contrato: FFAppState()
+                                                              .contrato,
+                                                          inspecaoInterna:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                          inspecaoExterna:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                          recipienteTransportavel:
+                                                              _model
+                                                                  .statusDropDownOutrosValue1,
+                                                          reservatorioPortatilFluidoComprimido:
+                                                              _model
+                                                                  .statusDropDownOutrosValue2,
+                                                          extintorIncendio: _model
+                                                              .statusDropDownOutrosValue3,
+                                                          dutoSeusComponentes:
+                                                              _model
+                                                                  .statusDropDownOutrosValue4,
+                                                          forno: _model
+                                                              .statusDropDownOutrosValue5,
+                                                          serpentinaTrocaTermica:
+                                                              _model
+                                                                  .statusDropDownOutrosValue6,
+                                                          aquecedorFluidoTermico:
+                                                              '',
+                                                          geradorVapor: '',
+                                                          trocadorCalorPlacasCorrugadas:
+                                                              '',
+                                                          tuboSistemaInstrumentacao:
+                                                              '',
+                                                          acumuladorExploracaoProducaoPetroleo:
+                                                              '',
+                                                          acumuladorHidraulico:
+                                                              '',
+                                                          panelaCoccao: '',
+                                                          enquadradoCodigoVP:
+                                                              '',
+                                                          enquadradoCodigoCaldeira:
+                                                              '',
+                                                        ));
 
-                                              await FFAppState()
-                                                  .createAplicabilidadeOUTROS!
-                                                  .update(
-                                                      createEquipamentosRecordData(
-                                                    codigo: 'G1.18',
-                                                    interna:
-                                                        valueOrDefault<String>(
-                                                      _model
-                                                          .retornoPeriodicidadeTANQUES
-                                                          ?.observacao,
-                                                      '0',
-                                                    ),
-                                                    externa:
-                                                        valueOrDefault<String>(
-                                                      _model
-                                                          .retornoPeriodicidadeTANQUES
-                                                          ?.observacao,
-                                                      '0',
-                                                    ),
-                                                  ));
-                                              setState(() {
-                                                FFAppState()
-                                                        .aplicabilidadeCreating =
-                                                    false;
-                                                FFAppState()
-                                                        .createAplicabilidadeOUTROS =
-                                                    null;
-                                              });
+                                                    await FFAppState()
+                                                        .createAplicabilidadeOUTROS!
+                                                        .update(
+                                                            createEquipamentosRecordData(
+                                                          codigo: 'G1.18',
+                                                          interna:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                          externa:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                        ));
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .aplicabilidadeCreating =
+                                                          false;
+                                                      FFAppState()
+                                                              .createAplicabilidadeOUTROS =
+                                                          null;
+                                                    });
 
-                                              context.goNamed('Equipamentos');
-                                            },
+                                                    context.goNamed(
+                                                        'Equipamentos');
+                                                  },
                                             text: 'Salvar',
                                             options: FFButtonOptions(
                                               height: 40.0,
@@ -6569,218 +6604,226 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                   BorderRadius.circular(8.0),
                                             ),
                                           ),
-                                          if (_model.tanquesAceitos.length == 1)
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                _model.retornoPeriodicidadeTANQUES =
-                                                    await queryPeriodicidadeTanqueRecordOnce(
-                                                  queryBuilder:
-                                                      (periodicidadeTanqueRecord) =>
-                                                          periodicidadeTanqueRecord
-                                                              .where(
-                                                    'Codigo',
-                                                    isEqualTo: _model
-                                                        .tanquesAceitos
-                                                        .first
-                                                        .codigo,
-                                                  ),
-                                                  singleRecord: true,
-                                                ).then((s) => s.firstOrNull);
+                                          FFButtonWidget(
+                                            onPressed: ((_model.tanquesAceitos
+                                                            .length >
+                                                        1) ||
+                                                    (_model.statusDropDownTANQUESMetalicoValue ==
+                                                            null ||
+                                                        _model.statusDropDownTANQUESMetalicoValue ==
+                                                            ''))
+                                                ? null
+                                                : () async {
+                                                    _model.retornoPeriodicidadeTANQUES =
+                                                        await queryPeriodicidadeTanqueRecordOnce(
+                                                      queryBuilder:
+                                                          (periodicidadeTanqueRecord) =>
+                                                              periodicidadeTanqueRecord
+                                                                  .where(
+                                                        'Codigo',
+                                                        isEqualTo: _model
+                                                            .tanquesAceitos
+                                                            .first
+                                                            .codigo,
+                                                      ),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
 
-                                                await AplicabilidadeTANQUESRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set(
-                                                        createAplicabilidadeTANQUESRecordData(
-                                                      tanqueMetalicoArmazenamento:
-                                                          FFAppState()
-                                                              .userControleTANQUES
-                                                              .tanqueMetalicoArmazenamento,
-                                                      tanqueDiametroExternoMaiorTresMetros:
-                                                          FFAppState()
-                                                              .userControleTANQUES
-                                                              .tanqueDiametroExternoMaiorTresMetros,
-                                                      tanqueCapacidadeNominalMaiorVinteMilLitros:
-                                                          FFAppState()
-                                                              .userControleTANQUES
-                                                              .tanqueCapacidadeNominalMaiorVinteMilLitros,
-                                                      tanqueEnterrado:
-                                                          FFAppState()
+                                                    await AplicabilidadeTANQUESRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createAplicabilidadeTANQUESRecordData(
+                                                          tanqueMetalicoArmazenamento:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueMetalicoArmazenamento,
+                                                          tanqueDiametroExternoMaiorTresMetros:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueDiametroExternoMaiorTresMetros,
+                                                          tanqueCapacidadeNominalMaiorVinteMilLitros:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueCapacidadeNominalMaiorVinteMilLitros,
+                                                          tanqueEnterrado: FFAppState()
                                                               .userControleTANQUES
                                                               .tanqueEnterrado,
-                                                      tanqueApoiadoSobreSapatas:
-                                                          FFAppState()
+                                                          tanqueApoiadoSobreSapatas:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueApoiadoSobreSapatas,
+                                                          tanqueApoiadoSobrePedestais:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueApoiadoSobrePedestais,
+                                                          tanqueApoiadoSobreSelas:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueApoiadoSobreSelas,
+                                                          tanqueEstruturalEmbarcacao:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueEstruturalEmbarcacao,
+                                                          tanqueEstruturalNavio:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueEstruturalNavio,
+                                                          tanqueEstruturalPlataforma:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueEstruturalPlataforma,
+                                                          combustivel: FFAppState()
                                                               .userControleTANQUES
-                                                              .tanqueApoiadoSobreSapatas,
-                                                      tanqueApoiadoSobrePedestais:
-                                                          FFAppState()
+                                                              .combustivel,
+                                                          inflamavel: FFAppState()
                                                               .userControleTANQUES
-                                                              .tanqueApoiadoSobrePedestais,
-                                                      tanqueApoiadoSobreSelas:
-                                                          FFAppState()
+                                                              .inflamavel,
+                                                          toxico: FFAppState()
                                                               .userControleTANQUES
-                                                              .tanqueApoiadoSobreSelas,
-                                                      tanqueEstruturalEmbarcacao:
-                                                          FFAppState()
+                                                              .toxico,
+                                                          codigo: _model
+                                                              .tanquesAceitos
+                                                              .first
+                                                              .codigo,
+                                                          tanqueApoiadoSobrePernas:
+                                                              FFAppState()
+                                                                  .userControleTANQUES
+                                                                  .tanqueApoiadoSobrePernas,
+                                                          hdois: FFAppState()
                                                               .userControleTANQUES
-                                                              .tanqueEstruturalEmbarcacao,
-                                                      tanqueEstruturalNavio:
-                                                          FFAppState()
+                                                              .hdois,
+                                                          cdoisHdois: FFAppState()
                                                               .userControleTANQUES
-                                                              .tanqueEstruturalNavio,
-                                                      tanqueEstruturalPlataforma:
-                                                          FFAppState()
-                                                              .userControleTANQUES
-                                                              .tanqueEstruturalPlataforma,
-                                                      combustivel: FFAppState()
-                                                          .userControleTANQUES
-                                                          .combustivel,
-                                                      inflamavel: FFAppState()
-                                                          .userControleTANQUES
-                                                          .inflamavel,
-                                                      toxico: FFAppState()
-                                                          .userControleTANQUES
-                                                          .toxico,
-                                                      codigo: _model
-                                                          .tanquesAceitos
-                                                          .first
-                                                          .codigo,
-                                                      tanqueApoiadoSobrePernas:
-                                                          FFAppState()
-                                                              .userControleTANQUES
-                                                              .tanqueApoiadoSobrePernas,
-                                                      hdois: FFAppState()
-                                                          .userControleTANQUES
-                                                          .hdois,
-                                                      cdoisHdois: FFAppState()
-                                                          .userControleTANQUES
-                                                          .cdoisHdois,
-                                                      classeFluido: () {
-                                                        if ((FFAppState()
-                                                                    .userControleTANQUES
-                                                                    .hdois ==
-                                                                '1') ||
-                                                            (FFAppState()
-                                                                    .userControleTANQUES
-                                                                    .cdoisHdois ==
-                                                                '1') ||
-                                                            (FFAppState()
-                                                                    .userControleTANQUES
-                                                                    .inflamavel ==
-                                                                '1')) {
-                                                          return 'A';
-                                                        } else if ((FFAppState()
-                                                                    .userControleTANQUES
-                                                                    .combustivel ==
-                                                                '1') ||
-                                                            (FFAppState()
-                                                                    .userControleTANQUES
-                                                                    .toxico ==
-                                                                '1')) {
-                                                          return 'A OU B';
-                                                        } else {
-                                                          return 'D';
-                                                        }
-                                                      }(),
-                                                      observacao: _model
-                                                          .retornoPeriodicidadeTANQUES
-                                                          ?.observacao,
-                                                      equipamento: FFAppState()
-                                                          .equipamentoAplicabilidade,
-                                                      tipoEquipamento: FFAppState()
-                                                          .tipoEquipAplicabilidade,
-                                                      descricaoEquipamento:
-                                                          FFAppState()
-                                                              .descriccaoEquipAplicabilidade,
-                                                      tagEquipamento: FFAppState()
-                                                          .tagEquipAplicabilidade,
-                                                      serieEquipamento: FFAppState()
-                                                          .serieEquipAplicabilidade,
-                                                      dataCadEquipamento:
-                                                          FFAppState()
-                                                              .dataCadEquipAplicabilidade
-                                                              ?.toString(),
-                                                      avaliador:
-                                                          currentUserDisplayName,
-                                                      createdTime:
-                                                          getCurrentTimestamp,
-                                                      contrato:
-                                                          FFAppState().contrato,
-                                                      fluido: _model
-                                                          .statusDropDownTANQUESFluidoValue,
-                                                    ));
+                                                              .cdoisHdois,
+                                                          classeFluido: () {
+                                                            if ((FFAppState().userControleTANQUES.hdois == '1') ||
+                                                                (FFAppState()
+                                                                        .userControleTANQUES
+                                                                        .cdoisHdois ==
+                                                                    '1') ||
+                                                                (FFAppState()
+                                                                        .userControleTANQUES
+                                                                        .inflamavel ==
+                                                                    '1')) {
+                                                              return 'A';
+                                                            } else if ((FFAppState()
+                                                                        .userControleTANQUES
+                                                                        .combustivel ==
+                                                                    '1') ||
+                                                                (FFAppState()
+                                                                        .userControleTANQUES
+                                                                        .toxico ==
+                                                                    '1')) {
+                                                              return 'A OU B';
+                                                            } else {
+                                                              return 'D';
+                                                            }
+                                                          }(),
+                                                          observacao: _model
+                                                              .retornoPeriodicidadeTANQUES
+                                                              ?.observacao,
+                                                          equipamento: FFAppState()
+                                                              .equipamentoAplicabilidade,
+                                                          tipoEquipamento:
+                                                              FFAppState()
+                                                                  .tipoEquipAplicabilidade,
+                                                          descricaoEquipamento:
+                                                              FFAppState()
+                                                                  .descriccaoEquipAplicabilidade,
+                                                          tagEquipamento:
+                                                              FFAppState()
+                                                                  .tagEquipAplicabilidade,
+                                                          serieEquipamento:
+                                                              FFAppState()
+                                                                  .serieEquipAplicabilidade,
+                                                          dataCadEquipamento:
+                                                              FFAppState()
+                                                                  .dataCadEquipAplicabilidade
+                                                                  ?.toString(),
+                                                          avaliador:
+                                                              currentUserDisplayName,
+                                                          createdTime:
+                                                              getCurrentTimestamp,
+                                                          contrato: FFAppState()
+                                                              .contrato,
+                                                          fluido: _model
+                                                              .statusDropDownTANQUESFluidoValue,
+                                                        ));
 
-                                                await FFAppState()
-                                                    .createAplicabilidadeTANQUES!
-                                                    .update(
-                                                        createEquipamentosRecordData(
-                                                      codigo: _model
-                                                          .tanquesAceitos
-                                                          .first
-                                                          .codigo,
-                                                      interna: valueOrDefault<
-                                                          String>(
-                                                        _model
-                                                            .retornoPeriodicidadeTANQUES
-                                                            ?.observacao,
-                                                        '0',
+                                                    await FFAppState()
+                                                        .createAplicabilidadeTANQUES!
+                                                        .update(
+                                                            createEquipamentosRecordData(
+                                                          codigo: _model
+                                                              .tanquesAceitos
+                                                              .first
+                                                              .codigo,
+                                                          interna:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                          externa:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTANQUES
+                                                                ?.observacao,
+                                                            '0',
+                                                          ),
+                                                        ));
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .aplicabilidadeCreating =
+                                                          false;
+                                                      FFAppState()
+                                                              .createAplicabilidadeTANQUES =
+                                                          null;
+                                                    });
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .userControleTANQUES =
+                                                          TanquesNrStruct();
+                                                    });
+
+                                                    context.goNamed(
+                                                        'Equipamentos');
+
+                                                    setState(() {});
+                                                  },
+                                            text: 'Salvar',
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
-                                                      externa: valueOrDefault<
-                                                          String>(
-                                                        _model
-                                                            .retornoPeriodicidadeTANQUES
-                                                            ?.observacao,
-                                                        '0',
-                                                      ),
-                                                    ));
-                                                setState(() {
-                                                  FFAppState()
-                                                          .aplicabilidadeCreating =
-                                                      false;
-                                                  FFAppState()
-                                                          .createAplicabilidadeTANQUES =
-                                                      null;
-                                                });
-                                                setState(() {
-                                                  FFAppState()
-                                                          .userControleTANQUES =
-                                                      TanquesNrStruct();
-                                                });
-
-                                                context.goNamed('Equipamentos');
-
-                                                setState(() {});
-                                              },
-                                              text: 'Salvar',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
+                                          ),
                                         ].divide(SizedBox(width: 50.0)),
                                       ),
                                     ],
@@ -9859,10 +9902,14 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                           ),
                                           FFButtonWidget(
-                                            onPressed: (_model
-                                                        .tubCaldeirasAceitos
-                                                        .length >
-                                                    1)
+                                            onPressed: ((_model
+                                                            .tubCaldeirasAceitos
+                                                            .length >
+                                                        1) ||
+                                                    (_model.statusDropDownCALDVolumeTUBCValue ==
+                                                            null ||
+                                                        _model.statusDropDownCALDVolumeTUBCValue ==
+                                                            ''))
                                                 ? null
                                                 : () async {
                                                     _model.retornoPeriodicidadeTUBCALDS =
@@ -12944,9 +12991,13 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                           ),
                                           FFButtonWidget(
-                                            onPressed: (_model.caldeirasAceitos
-                                                        .length >
-                                                    1)
+                                            onPressed: ((_model.caldeirasAceitos
+                                                            .length >
+                                                        1) ||
+                                                    (_model.statusDropDownCALDVolumeValue ==
+                                                            null ||
+                                                        _model.statusDropDownCALDVolumeValue ==
+                                                            ''))
                                                 ? null
                                                 : () async {
                                                     _model.retornoPeriodicidadeCALDERIAS =
@@ -20962,559 +21013,611 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                           ),
                                           FFButtonWidget(
-                                            onPressed: () async {
-                                              if (FFAppState()
-                                                      .userControleTUBVP
-                                                      .classeA ==
-                                                  '1') {
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) <
-                                                    1.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '3';
-                                                    _model.grupoRiscoFluido =
-                                                        '5';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        1.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        2.5)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '3';
-                                                    _model.grupoRiscoFluido =
-                                                        '4';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        2.5) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        30.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '2';
-                                                    _model.grupoRiscoFluido =
-                                                        '3';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        30.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        100.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '1';
-                                                    _model.grupoRiscoFluido =
-                                                        '2';
-                                                  });
-                                                }
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) >=
-                                                    100.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '1';
-                                                    _model.grupoRiscoFluido =
-                                                        '1';
-                                                  });
-                                                }
-                                              }
-                                              if (FFAppState()
-                                                      .userControleTUBVP
-                                                      .classeB ==
-                                                  '1') {
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) <
-                                                    1.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '4';
-                                                    _model.grupoRiscoFluido =
-                                                        '5';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        1.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        2.5)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '4';
-                                                    _model.grupoRiscoFluido =
-                                                        '4';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        2.5) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        30.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '3';
-                                                    _model.grupoRiscoFluido =
-                                                        '3';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        30.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        100.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '2';
-                                                    _model.grupoRiscoFluido =
-                                                        '2';
-                                                  });
-                                                }
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) >=
-                                                    100.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '1';
-                                                    _model.grupoRiscoFluido =
-                                                        '1';
-                                                  });
-                                                }
-                                              }
-                                              if (FFAppState()
-                                                      .userControleTUBVP
-                                                      .classeC ==
-                                                  '1') {
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) <
-                                                    1.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '5';
-                                                    _model.grupoRiscoFluido =
-                                                        '5';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        1.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        2.5)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '4';
-                                                    _model.grupoRiscoFluido =
-                                                        '4';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        2.5) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        30.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '3';
-                                                    _model.grupoRiscoFluido =
-                                                        '3';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        30.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        100.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '2';
-                                                    _model.grupoRiscoFluido =
-                                                        '2';
-                                                  });
-                                                }
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) >=
-                                                    100.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '1';
-                                                    _model.grupoRiscoFluido =
-                                                        '1';
-                                                  });
-                                                }
-                                              }
-                                              if (FFAppState()
-                                                      .userControleTUBVP
-                                                      .classeD ==
-                                                  '1') {
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) <
-                                                    1.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '5';
-                                                    _model.grupoRiscoFluido =
-                                                        '5';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        1.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        2.5)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '5';
-                                                    _model.grupoRiscoFluido =
-                                                        '4';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        2.5) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        30.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '4';
-                                                    _model.grupoRiscoFluido =
-                                                        '3';
-                                                  });
-                                                }
-                                                if ((valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) >=
-                                                        30.0) &&
-                                                    (valueOrDefault<double>(
-                                                          _model.pv,
-                                                          0.0,
-                                                        ) <
-                                                        100.0)) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '3';
-                                                    _model.grupoRiscoFluido =
-                                                        '2';
-                                                  });
-                                                }
-                                                if (valueOrDefault<double>(
-                                                      _model.pv,
-                                                      0.0,
-                                                    ) >=
-                                                    100.0) {
-                                                  setState(() {
-                                                    _model.categoriaFluido =
-                                                        '2';
-                                                    _model.grupoRiscoFluido =
-                                                        '1';
-                                                  });
-                                                }
-                                              }
-                                              _model.retornoPeriodicidadeTUBVP =
-                                                  await queryPeriodicidadeTubVpRecordOnce(
-                                                queryBuilder:
-                                                    (periodicidadeTubVpRecord) =>
-                                                        periodicidadeTubVpRecord
-                                                            .where(
-                                                  'Codigo',
-                                                  isEqualTo: _model
-                                                      .tubeVpAceitos
-                                                      .first
-                                                      .codigo,
-                                                ),
-                                                singleRecord: true,
-                                              ).then((s) => s.firstOrNull);
-
-                                              await AplicabilidadeTubVPRecord
-                                                  .collection
-                                                  .doc()
-                                                  .set(
-                                                      createAplicabilidadeTubVPRecordData(
-                                                    transporteProduto:
-                                                        FFAppState()
+                                            onPressed: ((_model.tubeVpAceitos
+                                                            .length >
+                                                        1) ||
+                                                    (_model.statusDropDownRedePubTUBValue ==
+                                                            null ||
+                                                        _model.statusDropDownRedePubTUBValue ==
+                                                            ''))
+                                                ? null
+                                                : () async {
+                                                    if (FFAppState()
                                                             .userControleTUBVP
-                                                            .transporteProduto,
-                                                    conformidadeCodigoProjeto:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .conformidadeCodigoProjeto,
-                                                    instalacaoAntesDezembroDzOito:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .instalacaoAntesDezembroDzOito,
-                                                    classeA: FFAppState()
-                                                        .userControleTUBVP
-                                                        .classeA,
-                                                    classeC: FFAppState()
-                                                        .userControleTUBVP
-                                                        .classeB,
-                                                    classeD: FFAppState()
-                                                        .userControleTUBVP
-                                                        .classeA,
-                                                    pVMaiorZZZOitoPV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pVMaiorZZZOitoPV,
-                                                    pVMaiorIgualUmMenorDoisCincoPV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pVMaiorIgualUmMenorDoisCincoPV,
-                                                    pVMaiorIgualDoisCincoMenorTrintaPV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pVMaiorIgualDoisCincoMenorTrintaPV,
-                                                    pVMaiorIgualTrintaMenorCemPV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pVMaiorIgualTrintaMenorCemPV,
-                                                    pVMaiorIgualCemPV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pVMaiorIgualCemPV,
-                                                    temperaturaMenor0C:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .temperaturaMenor0C,
-                                                    semEvidenciaDeterioracao:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .semEvidenciaDeterioracao,
-                                                    enchInternoEOUCatalisador:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .enchInternoEOUCatalisador,
-                                                    estudoAbonadorInspecaoInternaDif:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .estudoAbonadorInspecaoInternaDif,
-                                                    sPIEServicoPropInspecaoEquip:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .sPIEServicoPropInspecaoEquip,
-                                                    codigo: _model.tubeVpAceitos
-                                                        .first.codigo,
-                                                    classeB: FFAppState()
-                                                        .userControleTUBVP
-                                                        .classeB,
-                                                    potencialDeRisco:
-                                                        _model.grupoRiscoFluido,
-                                                    categoria:
-                                                        _model.categoriaFluido,
-                                                    equipamento: FFAppState()
-                                                        .equipamentoAplicabilidade,
-                                                    tipoEquipamento: FFAppState()
-                                                        .tipoEquipAplicabilidade,
-                                                    avaliador:
-                                                        currentUserDisplayName,
-                                                    dataCadEquipamento: FFAppState()
-                                                        .dataCadEquipAplicabilidade
-                                                        ?.toString(),
-                                                    contrato:
-                                                        FFAppState().contrato,
-                                                    redePublicaDistribuicaoGas:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .redePublicaDistribuicaoGas,
-                                                    interligadaVPParaOcupacaoHumana:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .interligadaVPParaOcupacaoHumana,
-                                                    interligadaVPSistemaAuxiliarMaquina:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .interligadaVPSistemaAuxiliarMaquina,
-                                                    interligadaVasoPressaoPRFV:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .interligadaVasoPressaoPRFV,
-                                                    equipamentoSubmarinoExploracaoProducaoPetroleo:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .equipamentoSubmarinoExploracaoProducaoPetroleo,
-                                                    ligadaVasoDiametro:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .ligadaVasoDiametro,
-                                                    possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido,
-                                                    pressaoZeroCincoMenorZeroUm:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .pressaoZeroCincoMenorZeroUm,
-                                                    ampliacaoProgramaPLH:
-                                                        FFAppState()
-                                                            .userControleTUBVP
-                                                            .ampliacaoProgramaPLH,
-                                                    causa: FFAppState()
-                                                        .userControleTUBVP
-                                                        .causa,
-                                                    descricaoEquipamento:
-                                                        FFAppState()
-                                                            .descriccaoEquipAplicabilidade,
-                                                    tagEquipamento: FFAppState()
-                                                        .tagEquipAplicabilidade,
-                                                    createdTime:
-                                                        getCurrentTimestamp
-                                                            .toString(),
-                                                    inspecaoExterna: _model
-                                                        .retornoPeriodicidadeTUBVP
-                                                        ?.externa,
-                                                    observacao: _model
-                                                        .retornoPeriodicidadeTUBVP
-                                                        ?.observacao,
-                                                    fluido: () {
-                                                      if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'A') {
-                                                        return 'Combustível & Temperatura de Operação ≥ 200°C';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'A2') {
-                                                        return 'H2 - Hidrogênio';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'A3') {
-                                                        return 'C2H2 - Acetileno';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'A4') {
-                                                        return 'Tóxico com Limite ≤ 20 ppm';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'B') {
-                                                        return 'Combustível & Temperatura de Operação < 200°C';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoTUBValue ==
-                                                          'B2') {
-                                                        return 'Tóxico com Limite > 20 ppm';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoValue ==
-                                                          'D') {
-                                                        return 'Não classificado';
-                                                      } else if (_model
-                                                              .statusDropDownFluidoValue ==
-                                                          'A5') {
-                                                        return 'Inflamável';
-                                                      } else {
-                                                        return '-';
+                                                            .classeA ==
+                                                        '1') {
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) <
+                                                          1.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '3';
+                                                          _model.grupoRiscoFluido =
+                                                              '5';
+                                                        });
                                                       }
-                                                    }(),
-                                                    pressao: _model
-                                                        .pressaoInputTUBTextController
-                                                        .text,
-                                                    pv: valueOrDefault<String>(
-                                                      _model.pv?.toString(),
-                                                      '0',
-                                                    ),
-                                                  ));
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              1.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              2.5)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '3';
+                                                          _model.grupoRiscoFluido =
+                                                              '4';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              2.5) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              30.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '2';
+                                                          _model.grupoRiscoFluido =
+                                                              '3';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              30.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              100.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '1';
+                                                          _model.grupoRiscoFluido =
+                                                              '2';
+                                                        });
+                                                      }
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) >=
+                                                          100.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '1';
+                                                          _model.grupoRiscoFluido =
+                                                              '1';
+                                                        });
+                                                      }
+                                                    }
+                                                    if (FFAppState()
+                                                            .userControleTUBVP
+                                                            .classeB ==
+                                                        '1') {
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) <
+                                                          1.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '4';
+                                                          _model.grupoRiscoFluido =
+                                                              '5';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              1.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              2.5)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '4';
+                                                          _model.grupoRiscoFluido =
+                                                              '4';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              2.5) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              30.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '3';
+                                                          _model.grupoRiscoFluido =
+                                                              '3';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              30.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              100.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '2';
+                                                          _model.grupoRiscoFluido =
+                                                              '2';
+                                                        });
+                                                      }
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) >=
+                                                          100.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '1';
+                                                          _model.grupoRiscoFluido =
+                                                              '1';
+                                                        });
+                                                      }
+                                                    }
+                                                    if (FFAppState()
+                                                            .userControleTUBVP
+                                                            .classeC ==
+                                                        '1') {
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) <
+                                                          1.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '5';
+                                                          _model.grupoRiscoFluido =
+                                                              '5';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              1.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              2.5)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '4';
+                                                          _model.grupoRiscoFluido =
+                                                              '4';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              2.5) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              30.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '3';
+                                                          _model.grupoRiscoFluido =
+                                                              '3';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              30.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              100.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '2';
+                                                          _model.grupoRiscoFluido =
+                                                              '2';
+                                                        });
+                                                      }
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) >=
+                                                          100.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '1';
+                                                          _model.grupoRiscoFluido =
+                                                              '1';
+                                                        });
+                                                      }
+                                                    }
+                                                    if (FFAppState()
+                                                            .userControleTUBVP
+                                                            .classeD ==
+                                                        '1') {
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) <
+                                                          1.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '5';
+                                                          _model.grupoRiscoFluido =
+                                                              '5';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              1.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              2.5)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '5';
+                                                          _model.grupoRiscoFluido =
+                                                              '4';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              2.5) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              30.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '4';
+                                                          _model.grupoRiscoFluido =
+                                                              '3';
+                                                        });
+                                                      }
+                                                      if ((valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) >=
+                                                              30.0) &&
+                                                          (valueOrDefault<
+                                                                  double>(
+                                                                _model.pv,
+                                                                0.0,
+                                                              ) <
+                                                              100.0)) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '3';
+                                                          _model.grupoRiscoFluido =
+                                                              '2';
+                                                        });
+                                                      }
+                                                      if (valueOrDefault<
+                                                              double>(
+                                                            _model.pv,
+                                                            0.0,
+                                                          ) >=
+                                                          100.0) {
+                                                        setState(() {
+                                                          _model.categoriaFluido =
+                                                              '2';
+                                                          _model.grupoRiscoFluido =
+                                                              '1';
+                                                        });
+                                                      }
+                                                    }
+                                                    _model.retornoPeriodicidadeTUBVP =
+                                                        await queryPeriodicidadeTubVpRecordOnce(
+                                                      queryBuilder:
+                                                          (periodicidadeTubVpRecord) =>
+                                                              periodicidadeTubVpRecord
+                                                                  .where(
+                                                        'Codigo',
+                                                        isEqualTo: _model
+                                                            .tubeVpAceitos
+                                                            .first
+                                                            .codigo,
+                                                      ),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
 
-                                              await FFAppState()
-                                                  .createAplicabilidadeTUBVP!
-                                                  .update(
-                                                      createEquipamentosRecordData(
-                                                    codigo: _model.tubeVpAceitos
-                                                        .first.codigo,
-                                                    interna: '0',
-                                                    externa:
-                                                        valueOrDefault<String>(
-                                                      _model
-                                                          .retornoPeriodicidadeTUBVP
-                                                          ?.externa,
-                                                      '0',
-                                                    ),
-                                                  ));
-                                              setState(() {
-                                                FFAppState()
-                                                        .aplicabilidadeCreating =
-                                                    false;
-                                                FFAppState()
-                                                        .createAplicabilidadeTUBVP =
-                                                    null;
-                                              });
-                                              setState(() {
-                                                FFAppState().userControleTUBVP =
-                                                    TubVpNrStruct();
-                                              });
+                                                    await AplicabilidadeTubVPRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createAplicabilidadeTubVPRecordData(
+                                                          transporteProduto:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .transporteProduto,
+                                                          conformidadeCodigoProjeto:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .conformidadeCodigoProjeto,
+                                                          instalacaoAntesDezembroDzOito:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .instalacaoAntesDezembroDzOito,
+                                                          classeA: FFAppState()
+                                                              .userControleTUBVP
+                                                              .classeA,
+                                                          classeC: FFAppState()
+                                                              .userControleTUBVP
+                                                              .classeB,
+                                                          classeD: FFAppState()
+                                                              .userControleTUBVP
+                                                              .classeA,
+                                                          pVMaiorZZZOitoPV: FFAppState()
+                                                              .userControleTUBVP
+                                                              .pVMaiorZZZOitoPV,
+                                                          pVMaiorIgualUmMenorDoisCincoPV:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .pVMaiorIgualUmMenorDoisCincoPV,
+                                                          pVMaiorIgualDoisCincoMenorTrintaPV:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .pVMaiorIgualDoisCincoMenorTrintaPV,
+                                                          pVMaiorIgualTrintaMenorCemPV:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .pVMaiorIgualTrintaMenorCemPV,
+                                                          pVMaiorIgualCemPV:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .pVMaiorIgualCemPV,
+                                                          temperaturaMenor0C:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .temperaturaMenor0C,
+                                                          semEvidenciaDeterioracao:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .semEvidenciaDeterioracao,
+                                                          enchInternoEOUCatalisador:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .enchInternoEOUCatalisador,
+                                                          estudoAbonadorInspecaoInternaDif:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .estudoAbonadorInspecaoInternaDif,
+                                                          sPIEServicoPropInspecaoEquip:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .sPIEServicoPropInspecaoEquip,
+                                                          codigo: _model
+                                                              .tubeVpAceitos
+                                                              .first
+                                                              .codigo,
+                                                          classeB: FFAppState()
+                                                              .userControleTUBVP
+                                                              .classeB,
+                                                          potencialDeRisco: _model
+                                                              .grupoRiscoFluido,
+                                                          categoria: _model
+                                                              .categoriaFluido,
+                                                          equipamento: FFAppState()
+                                                              .equipamentoAplicabilidade,
+                                                          tipoEquipamento:
+                                                              FFAppState()
+                                                                  .tipoEquipAplicabilidade,
+                                                          avaliador:
+                                                              currentUserDisplayName,
+                                                          dataCadEquipamento:
+                                                              FFAppState()
+                                                                  .dataCadEquipAplicabilidade
+                                                                  ?.toString(),
+                                                          contrato: FFAppState()
+                                                              .contrato,
+                                                          redePublicaDistribuicaoGas:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .redePublicaDistribuicaoGas,
+                                                          interligadaVPParaOcupacaoHumana:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .interligadaVPParaOcupacaoHumana,
+                                                          interligadaVPSistemaAuxiliarMaquina:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .interligadaVPSistemaAuxiliarMaquina,
+                                                          interligadaVasoPressaoPRFV:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .interligadaVasoPressaoPRFV,
+                                                          equipamentoSubmarinoExploracaoProducaoPetroleo:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .equipamentoSubmarinoExploracaoProducaoPetroleo,
+                                                          ligadaVasoDiametro:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .ligadaVasoDiametro,
+                                                          possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido,
+                                                          pressaoZeroCincoMenorZeroUm:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .pressaoZeroCincoMenorZeroUm,
+                                                          ampliacaoProgramaPLH:
+                                                              FFAppState()
+                                                                  .userControleTUBVP
+                                                                  .ampliacaoProgramaPLH,
+                                                          causa: FFAppState()
+                                                              .userControleTUBVP
+                                                              .causa,
+                                                          descricaoEquipamento:
+                                                              FFAppState()
+                                                                  .descriccaoEquipAplicabilidade,
+                                                          tagEquipamento:
+                                                              FFAppState()
+                                                                  .tagEquipAplicabilidade,
+                                                          createdTime:
+                                                              getCurrentTimestamp
+                                                                  .toString(),
+                                                          inspecaoExterna: _model
+                                                              .retornoPeriodicidadeTUBVP
+                                                              ?.externa,
+                                                          observacao: _model
+                                                              .retornoPeriodicidadeTUBVP
+                                                              ?.observacao,
+                                                          fluido: () {
+                                                            if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'A') {
+                                                              return 'Combustível & Temperatura de Operação ≥ 200°C';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'A2') {
+                                                              return 'H2 - Hidrogênio';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'A3') {
+                                                              return 'C2H2 - Acetileno';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'A4') {
+                                                              return 'Tóxico com Limite ≤ 20 ppm';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'B') {
+                                                              return 'Combustível & Temperatura de Operação < 200°C';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoTUBValue ==
+                                                                'B2') {
+                                                              return 'Tóxico com Limite > 20 ppm';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoValue ==
+                                                                'D') {
+                                                              return 'Não classificado';
+                                                            } else if (_model
+                                                                    .statusDropDownFluidoValue ==
+                                                                'A5') {
+                                                              return 'Inflamável';
+                                                            } else {
+                                                              return '-';
+                                                            }
+                                                          }(),
+                                                          pressao: _model
+                                                              .pressaoInputTUBTextController
+                                                              .text,
+                                                          pv: valueOrDefault<
+                                                              String>(
+                                                            _model.pv
+                                                                ?.toString(),
+                                                            '0',
+                                                          ),
+                                                        ));
 
-                                              context.goNamed('Equipamentos');
+                                                    await FFAppState()
+                                                        .createAplicabilidadeTUBVP!
+                                                        .update(
+                                                            createEquipamentosRecordData(
+                                                          codigo: _model
+                                                              .tubeVpAceitos
+                                                              .first
+                                                              .codigo,
+                                                          interna: '0',
+                                                          externa:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            _model
+                                                                .retornoPeriodicidadeTUBVP
+                                                                ?.externa,
+                                                            '0',
+                                                          ),
+                                                        ));
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .aplicabilidadeCreating =
+                                                          false;
+                                                      FFAppState()
+                                                              .createAplicabilidadeTUBVP =
+                                                          null;
+                                                    });
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .userControleTUBVP =
+                                                          TubVpNrStruct();
+                                                    });
 
-                                              setState(() {});
-                                            },
+                                                    context.goNamed(
+                                                        'Equipamentos');
+
+                                                    setState(() {});
+                                                  },
                                             text: 'Salvar',
                                             options: FFButtonOptions(
                                               height: 40.0,
@@ -30076,9 +30179,13 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                             ),
                                           ),
                                           FFButtonWidget(
-                                            onPressed: (_model
-                                                        .vpAceitos.length >
-                                                    1)
+                                            onPressed: ((_model
+                                                            .vpAceitos.length >
+                                                        1) ||
+                                                    (_model.statusDropDownOcupacaoValue ==
+                                                            null ||
+                                                        _model.statusDropDownOcupacaoValue ==
+                                                            ''))
                                                 ? null
                                                 : () async {
                                                     if (FFAppState()
