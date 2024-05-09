@@ -1060,6 +1060,12 @@ class FFAppState extends ChangeNotifier {
     _editiAplicabilidadeNR13 = _value;
   }
 
+  DocumentReference? _editAplicabilidadeCaldeira;
+  DocumentReference? get editAplicabilidadeCaldeira => _editAplicabilidadeCaldeira;
+  set editAplicabilidadeCaldeira(DocumentReference? _value) {
+    _editAplicabilidadeCaldeira = _value;
+  }
+
   String _pressaoAplicabilidade = '';
   String get pressaoAplicabilidade => _pressaoAplicabilidade;
   set pressaoAplicabilidade(String _value) {

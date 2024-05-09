@@ -10359,7 +10359,9 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                       .statusDropDownCALDVolumeValueController ??=
                                                   FormFieldController<String>(
                                                 _model.statusDropDownCALDVolumeValue ??=
-                                                    '',
+                                                    FFAppState()
+                                                        .userControleCALDEIRAS
+                                                        .volumeMenorCemLitros,
                                               ),
                                               options:
                                                   List<String>.from(['1', '0']),
@@ -11106,7 +11108,9 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                         .statusDropDownCALDSpieValueController ??=
                                                     FormFieldController<String>(
                                                   _model.statusDropDownCALDSpieValue ??=
-                                                      '',
+                                                      FFAppState()
+                                                          .userControleCALDEIRAS
+                                                          .sPIEServicoProprioInspecaoEquipamento,
                                                 ),
                                                 options: List<String>.from(
                                                     ['1', '0']),
@@ -13452,7 +13456,9 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                       .statusDropDownRedePubTUBValueController ??=
                                                   FormFieldController<String>(
                                                 _model.statusDropDownRedePubTUBValue ??=
-                                                    '',
+                                                    FFAppState()
+                                                        .userControleTUBVP
+                                                        .redePublicaDistribuicaoGas,
                                               ),
                                               options:
                                                   List<String>.from(['1', '0']),
@@ -13701,7 +13707,9 @@ class _AplicabilidadeNR13WidgetState extends State<AplicabilidadeNR13Widget>
                                                         .statusDropDownOcupacaoTUBValueController ??=
                                                     FormFieldController<String>(
                                                   _model.statusDropDownOcupacaoTUBValue ??=
-                                                      '',
+                                                      FFAppState()
+                                                          .userControleTUBVP
+                                                          .interligadaVPParaOcupacaoHumana,
                                                 ),
                                                 options: List<String>.from(
                                                     ['1', '0']),

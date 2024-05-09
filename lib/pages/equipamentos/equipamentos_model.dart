@@ -225,6 +225,8 @@ class EquipamentosModel extends FlutterFlowModel<EquipamentosWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl4 = '';
 
+  AplicabilidadeTubVPRecord? retornoAplicabilidadeTUBVP;
+
   @override
   void initState(BuildContext context) {}
 
