@@ -947,6 +947,14 @@ class AplicabilidadeNR13Model
 
   AplicabilidadeTubVPRecord? toDeleteAplicabilidadeTubVP;
 
+  AplicabilidadeCALDSRecord? toDeleteAplicabilidadeCALDS;
+
+  AplicabilidadeTUBCALDSRecord? toDeleteAplicabilidadeTUBCALDS;
+
+  AplicabilidadeTANQUESRecord? toDeleteAplicabilidadeTANQUES;
+
+  AplicabilidadeOUTROSRecord? toDeleteAplicabilidadeOUTROS;
+
   @override
   void initState(BuildContext context) {}
 
