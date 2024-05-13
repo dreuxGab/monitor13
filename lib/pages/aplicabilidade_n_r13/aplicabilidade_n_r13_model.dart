@@ -942,6 +942,9 @@ class AplicabilidadeNR13Model
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   EquipamentosRecord? equipToUpdateOUTROS;
 
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeVpRecord? toDeleteAplicabilidadeVP;
+
   @override
   void initState(BuildContext context) {}
 
