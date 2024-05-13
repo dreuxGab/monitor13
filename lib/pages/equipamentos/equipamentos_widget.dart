@@ -2249,7 +2249,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           waitDuration:
                                                                               Duration(milliseconds: 100),
                                                                           showDuration:
-                                                                              Duration(milliseconds: 1500),
+                                                                              Duration(milliseconds: 100),
                                                                           triggerMode:
                                                                               TooltipTriggerMode.tap,
                                                                           child:
@@ -2491,7 +2491,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           waitDuration:
                                                                               Duration(milliseconds: 100),
                                                                           showDuration:
-                                                                              Duration(milliseconds: 1500),
+                                                                              Duration(milliseconds: 100),
                                                                           triggerMode:
                                                                               TooltipTriggerMode.tap,
                                                                           child:
@@ -2611,76 +2611,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                       hoverColor: Colors.transparent,
                                                                                       highlightColor: Colors.transparent,
                                                                                       onTap: () async {
-                                                                                        if ((listViewEquipamentosRecord.tipo == 'Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
-                                                                                          setState(() {
-                                                                                            FFAppState().createAplicabilidadeVP = listViewEquipamentosRecord.reference;
-                                                                                            FFAppState().aplicabilidadeCreating = true;
-                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
-                                                                                          });
-                                                                                          context.goNamed('AplicabilidadeNR13');
-                                                                                        }
-                                                                                        if ((listViewEquipamentosRecord.tipo == 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
-                                                                                          setState(() {
-                                                                                            FFAppState().aplicabilidadeCreating = true;
-                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                            FFAppState().createAplicabilidadeTUBVP = listViewEquipamentosRecord.reference;
-                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
-                                                                                          });
-                                                                                          context.goNamed('AplicabilidadeNR13');
-                                                                                        }
-                                                                                        if ((listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
-                                                                                          setState(() {
-                                                                                            FFAppState().aplicabilidadeCreating = true;
-                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                            FFAppState().createAplicabilidadeTUBCALDS = listViewEquipamentosRecord.reference;
-                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
-                                                                                          });
-                                                                                          context.goNamed('AplicabilidadeNR13');
-                                                                                        }
-                                                                                        if ((listViewEquipamentosRecord.tipo == 'Tanque') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
-                                                                                          setState(() {
-                                                                                            FFAppState().aplicabilidadeCreating = true;
-                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                            FFAppState().createAplicabilidadeTANQUES = listViewEquipamentosRecord.reference;
-                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
-                                                                                          });
-                                                                                          context.goNamed('AplicabilidadeNR13');
-                                                                                        }
-                                                                                        if ((listViewEquipamentosRecord.tipo != 'Tanque') && (listViewEquipamentosRecord.tipo != 'Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.tipo != 'Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
-                                                                                          setState(() {
-                                                                                            FFAppState().aplicabilidadeCreating = true;
-                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                            FFAppState().createAplicabilidadeOUTROS = listViewEquipamentosRecord.reference;
-                                                                                          });
-                                                                                          context.goNamed('AplicabilidadeNR13');
-                                                                                        }
-                                                                                        if ((listViewEquipamentosRecord.tipo == 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.codigo != null && listViewEquipamentosRecord.codigo != '')) {
+                                                                                        if (listViewEquipamentosRecord.codigo != null && listViewEquipamentosRecord.codigo != '') {
                                                                                           var confirmDialogResponse = await showDialog<bool>(
                                                                                                 context: context,
                                                                                                 builder: (alertDialogContext) {
@@ -2703,53 +2634,95 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                               false;
                                                                                           if (confirmDialogResponse) {
                                                                                             setState(() {
-                                                                                              FFAppState().aplicabilidadeCreating = true;
-                                                                                              FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
-                                                                                              FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
-                                                                                              FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
-                                                                                              FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
-                                                                                              FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
-                                                                                              FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
-                                                                                              FFAppState().createAplicabilidadeTUBVP = listViewEquipamentosRecord.reference;
-                                                                                              FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
-                                                                                            });
-                                                                                            _model.retornoAplicabilidadeTUBVP = await queryAplicabilidadeTubVPRecordOnce(
-                                                                                              queryBuilder: (aplicabilidadeTubVPRecord) => aplicabilidadeTubVPRecord.where(
-                                                                                                'Equipamento',
-                                                                                                isEqualTo: listViewEquipamentosRecord.nome,
-                                                                                              ),
-                                                                                              singleRecord: true,
-                                                                                            ).then((s) => s.firstOrNull);
-                                                                                            setState(() {
                                                                                               FFAppState().editiAplicabilidadeNR13 = true;
-                                                                                              FFAppState().updateUserControleTUBVPStruct((e) {
-                                                                                                if (_model.retornoAplicabilidadeTUBVP != null) {
-                                                                                                  e.redePublicaDistribuicaoGas = _model.retornoAplicabilidadeTUBVP?.redePublicaDistribuicaoGas;
-                                                                                                  e.interligadaVPParaOcupacaoHumana = _model.retornoAplicabilidadeTUBVP?.interligadaVPParaOcupacaoHumana;
-                                                                                                  e.interligadaVPSistemaAuxiliarMaquina = _model.retornoAplicabilidadeTUBVP?.interligadaVPSistemaAuxiliarMaquina;
-                                                                                                  e.interligadaVasoPressaoPRFV = _model.retornoAplicabilidadeTUBVP?.interligadaVasoPressaoPRFV;
-                                                                                                  e.equipamentoSubmarinoExploracaoProducaoPetroleo = _model.retornoAplicabilidadeTUBVP?.equipamentoSubmarinoExploracaoProducaoPetroleo;
-                                                                                                  e.ligadaVasoDiametro = _model.retornoAplicabilidadeTUBVP?.ligadaVasoDiametro;
-                                                                                                  e.conformidadeCodigoProjeto = _model.retornoAplicabilidadeTUBVP?.conformidadeCodigoProjeto;
-                                                                                                  e.instalacaoAntesDezembroDzOito = _model.retornoAplicabilidadeTUBVP?.instalacaoAntesDezembroDzOito;
-                                                                                                  e.possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido = _model.retornoAplicabilidadeTUBVP?.possibilidadeReconstituicaoMemoriaCalculoPMTASegundoCodigoReconhecido;
-                                                                                                  e.classeA = _model.retornoAplicabilidadeTUBVP?.classeA;
-                                                                                                  e.classeB = _model.retornoAplicabilidadeTUBVP?.classeB;
-                                                                                                  e.classeC = _model.retornoAplicabilidadeTUBVP?.classeC;
-                                                                                                  e.classeD = _model.retornoAplicabilidadeTUBVP?.classeD;
-                                                                                                  e.pressaoZeroCincoMenorZeroUm = _model.retornoAplicabilidadeTUBVP?.pressaoZeroCincoMenorZeroUm;
-                                                                                                  e.pVMaiorZZZOitoPV = _model.retornoAplicabilidadeTUBVP?.pVMaiorZZZOitoPV;
-                                                                                                  e.pVMaiorIgualUmMenorDoisCincoPV = _model.retornoAplicabilidadeTUBVP?.pVMaiorIgualUmMenorDoisCincoPV;
-                                                                                                  e.pVMaiorIgualDoisCincoMenorTrintaPV = _model.retornoAplicabilidadeTUBVP?.pVMaiorIgualDoisCincoMenorTrintaPV;
-                                                                                                  e.pVMaiorIgualTrintaMenorCemPV = _model.retornoAplicabilidadeTUBVP?.pVMaiorIgualTrintaMenorCemPV;
-                                                                                                }
-                                                                                              });
                                                                                             });
-
-                                                                                            context.goNamed('AplicabilidadeNR13');
+                                                                                          } else {
+                                                                                            return;
                                                                                           }
                                                                                         }
-                                                                                        setState(() {});
+                                                                                        if (listViewEquipamentosRecord.tipo == 'Vaso de Pressão') {
+                                                                                          setState(() {
+                                                                                            FFAppState().createAplicabilidadeVP = listViewEquipamentosRecord.reference;
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
+                                                                                        if (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Vaso de Pressão') {
+                                                                                          setState(() {
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().createAplicabilidadeTUBVP = listViewEquipamentosRecord.reference;
+                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
+                                                                                        if (listViewEquipamentosRecord.tipo == 'Caldeira') {
+                                                                                          setState(() {
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().createAplicabilidadeCALDEIRAS = listViewEquipamentosRecord.reference;
+                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
+                                                                                        if (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira') {
+                                                                                          setState(() {
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().createAplicabilidadeTUBCALDS = listViewEquipamentosRecord.reference;
+                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
+                                                                                        if (listViewEquipamentosRecord.tipo == 'Tanque') {
+                                                                                          setState(() {
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().createAplicabilidadeTANQUES = listViewEquipamentosRecord.reference;
+                                                                                            FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
+                                                                                        if ((listViewEquipamentosRecord.tipo != 'Tanque') && (listViewEquipamentosRecord.tipo != 'Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.tipo != 'Vaso de Pressão')) {
+                                                                                          setState(() {
+                                                                                            FFAppState().aplicabilidadeCreating = true;
+                                                                                            FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
+                                                                                            FFAppState().descriccaoEquipAplicabilidade = listViewEquipamentosRecord.descricao;
+                                                                                            FFAppState().tagEquipAplicabilidade = listViewEquipamentosRecord.tagNumber;
+                                                                                            FFAppState().serieEquipAplicabilidade = listViewEquipamentosRecord.serie;
+                                                                                            FFAppState().dataCadEquipAplicabilidade = listViewEquipamentosRecord.createdTime;
+                                                                                            FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
+                                                                                            FFAppState().createAplicabilidadeOUTROS = listViewEquipamentosRecord.reference;
+                                                                                          });
+                                                                                          context.goNamed('AplicabilidadeNR13');
+                                                                                        }
                                                                                       },
                                                                                       child: Icon(
                                                                                         Icons.add_business_outlined,
@@ -3242,7 +3215,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                       child:
                                                                           ExpandableNotifier(
                                                                         initialExpanded:
-                                                                            true,
+                                                                            false,
                                                                         child:
                                                                             ExpandablePanel(
                                                                           header:
@@ -3271,7 +3244,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                   tailBaseWidth: 24.0,
                                                                                   tailLength: 12.0,
                                                                                   waitDuration: Duration(milliseconds: 100),
-                                                                                  showDuration: Duration(milliseconds: 1500),
+                                                                                  showDuration: Duration(milliseconds: 100),
                                                                                   triggerMode: TooltipTriggerMode.tap,
                                                                                   child: Icon(
                                                                                     Icons.keyboard_arrow_down_rounded,
