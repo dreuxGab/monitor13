@@ -2653,15 +2653,15 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                 builder: (alertDialogContext) {
                                                                                                   return AlertDialog(
                                                                                                     title: Text('ATENÇÃO!'),
-                                                                                                    content: Text('Aplicabilidade já realizada pare este equipamento. Tem certeza que deseja continuar?'),
+                                                                                                    content: Text('Aplicabilidade já realizada pare este equipamento. Realizar uma nova?'),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                        child: Text('Cancelar'),
+                                                                                                        child: Text('Não'),
                                                                                                       ),
                                                                                                       TextButton(
                                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                        child: Text('Confirmar'),
+                                                                                                        child: Text('Sim'),
                                                                                                       ),
                                                                                                     ],
                                                                                                   );
@@ -3386,7 +3386,36 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  if ((listViewEquipamentosRecord.tipo == 'Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if (listViewEquipamentosRecord.codigo != null && listViewEquipamentosRecord.codigo != '') {
+                                                                                                    var confirmDialogResponse = await showDialog<bool>(
+                                                                                                          context: context,
+                                                                                                          builder: (alertDialogContext) {
+                                                                                                            return AlertDialog(
+                                                                                                              title: Text('ATENÇÃO!'),
+                                                                                                              content: Text('Aplicabilidade já realizada pare este equipamento. Realizar uma nova?'),
+                                                                                                              actions: [
+                                                                                                                TextButton(
+                                                                                                                  onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                                  child: Text('Não'),
+                                                                                                                ),
+                                                                                                                TextButton(
+                                                                                                                  onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                                  child: Text('Sim'),
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            );
+                                                                                                          },
+                                                                                                        ) ??
+                                                                                                        false;
+                                                                                                    if (confirmDialogResponse) {
+                                                                                                      setState(() {
+                                                                                                        FFAppState().editiAplicabilidadeNR13 = true;
+                                                                                                      });
+                                                                                                    } else {
+                                                                                                      return;
+                                                                                                    }
+                                                                                                  }
+                                                                                                  if (listViewEquipamentosRecord.tipo == 'Vaso de Pressão') {
                                                                                                     setState(() {
                                                                                                       FFAppState().createAplicabilidadeVP = listViewEquipamentosRecord.reference;
                                                                                                       FFAppState().aplicabilidadeCreating = true;
@@ -3398,10 +3427,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
                                                                                                       FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
                                                                                                   }
-                                                                                                  if ((listViewEquipamentosRecord.tipo == 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Vaso de Pressão') {
                                                                                                     setState(() {
                                                                                                       FFAppState().aplicabilidadeCreating = true;
                                                                                                       FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
@@ -3413,10 +3441,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().createAplicabilidadeTUBVP = listViewEquipamentosRecord.reference;
                                                                                                       FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
                                                                                                   }
-                                                                                                  if ((listViewEquipamentosRecord.tipo == 'Caldeira') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if (listViewEquipamentosRecord.tipo == 'Caldeira') {
                                                                                                     setState(() {
                                                                                                       FFAppState().aplicabilidadeCreating = true;
                                                                                                       FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
@@ -3428,10 +3455,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().createAplicabilidadeCALDEIRAS = listViewEquipamentosRecord.reference;
                                                                                                       FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
                                                                                                   }
-                                                                                                  if ((listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira') {
                                                                                                     setState(() {
                                                                                                       FFAppState().aplicabilidadeCreating = true;
                                                                                                       FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
@@ -3443,10 +3469,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().createAplicabilidadeTUBCALDS = listViewEquipamentosRecord.reference;
                                                                                                       FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
                                                                                                   }
-                                                                                                  if ((listViewEquipamentosRecord.tipo == 'Tanque') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if (listViewEquipamentosRecord.tipo == 'Tanque') {
                                                                                                     setState(() {
                                                                                                       FFAppState().aplicabilidadeCreating = true;
                                                                                                       FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
@@ -3458,10 +3483,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().createAplicabilidadeTANQUES = listViewEquipamentosRecord.reference;
                                                                                                       FFAppState().docRefAplicabilidade = listViewEquipamentosRecord.reference.id;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
                                                                                                   }
-                                                                                                  if ((listViewEquipamentosRecord.tipo != 'Tanque') && (listViewEquipamentosRecord.tipo != 'Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.tipo != 'Vaso de Pressão') && (listViewEquipamentosRecord.codigo == null || listViewEquipamentosRecord.codigo == '')) {
+                                                                                                  if ((listViewEquipamentosRecord.tipo != 'Tanque') && (listViewEquipamentosRecord.tipo != 'Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Caldeira') && (listViewEquipamentosRecord.tipo != 'Tubulação Interligando Vaso de Pressão') && (listViewEquipamentosRecord.tipo != 'Vaso de Pressão')) {
                                                                                                     setState(() {
                                                                                                       FFAppState().aplicabilidadeCreating = true;
                                                                                                       FFAppState().tipoEquipAplicabilidade = listViewEquipamentosRecord.tipo;
@@ -3472,25 +3496,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                                       FFAppState().equipamentoAplicabilidade = listViewEquipamentosRecord.nome;
                                                                                                       FFAppState().createAplicabilidadeOUTROS = listViewEquipamentosRecord.reference;
                                                                                                     });
-
                                                                                                     context.goNamed('AplicabilidadeNR13');
-                                                                                                  }
-                                                                                                  if (listViewEquipamentosRecord.codigo != null && listViewEquipamentosRecord.codigo != '') {
-                                                                                                    await showDialog(
-                                                                                                      context: context,
-                                                                                                      builder: (alertDialogContext) {
-                                                                                                        return AlertDialog(
-                                                                                                          title: Text('ATENÇÃO!'),
-                                                                                                          content: Text('Aplicabilidade já realizada para este equipamento.'),
-                                                                                                          actions: [
-                                                                                                            TextButton(
-                                                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                                              child: Text('Ok'),
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        );
-                                                                                                      },
-                                                                                                    );
                                                                                                   }
                                                                                                 },
                                                                                                 child: Icon(
