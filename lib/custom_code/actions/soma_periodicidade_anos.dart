@@ -14,13 +14,11 @@ Future<DateTime?> somaPeriodicidadeAnos(String? periodicidade) async {
     DateTime dataAtual = DateTime.now();
 
     // Verifica se a periodicidade é um número
-    if (int.tryParse(periodicidade) != null) {
-      // Converte a periodicidade para um número inteiro
-      int anos = int.parse(periodicidade);
-
+    int? anos = int.tryParse(periodicidade);
+    if (anos != null) {
       // Adiciona os anos à data atual
-      DateTime novaData = dataAtual.add(Duration(days: anos * 365));
-
+      DateTime novaData =
+          DateTime(dataAtual.year + anos, dataAtual.month, dataAtual.day);
       return novaData;
     } else {
       // Retorna null se a periodicidade não puder ser convertida para um número

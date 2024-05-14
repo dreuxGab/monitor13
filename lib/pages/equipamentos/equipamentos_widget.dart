@@ -2269,6 +2269,42 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                 _model.showInsp = true;
                                                                                 _model.tipoEquipamentoListVIewPais = listViewEquipamentosRecord.tipo;
                                                                               });
+                                                                              if ((listViewEquipamentosRecord.tipo == 'Caldeira') || (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira')) {
+                                                                                _model.equipVencimentoInternoMeses = await actions.somaPeriodicidadeMeses(
+                                                                                  valueOrDefault<String>(
+                                                                                    listViewEquipamentosRecord.interna,
+                                                                                    '0',
+                                                                                  ),
+                                                                                );
+                                                                                _model.equipVencimentoExternoMeses = await actions.somaPeriodicidadeMeses(
+                                                                                  valueOrDefault<String>(
+                                                                                    listViewEquipamentosRecord.externa,
+                                                                                    '0',
+                                                                                  ),
+                                                                                );
+                                                                                setState(() {
+                                                                                  _model.vencimentoInterno = _model.equipVencimentoInternoMeses;
+                                                                                  _model.vencimentoExterno = _model.equipVencimentoExternoMeses;
+                                                                                });
+                                                                              } else {
+                                                                                _model.equipVencimentoInternoAnos = await actions.somaPeriodicidadeAnos(
+                                                                                  valueOrDefault<String>(
+                                                                                    listViewEquipamentosRecord.interna,
+                                                                                    '0',
+                                                                                  ),
+                                                                                );
+                                                                                _model.equipVencimentoExternoAnos = await actions.somaPeriodicidadeAnos(
+                                                                                  valueOrDefault<String>(
+                                                                                    listViewEquipamentosRecord.externa,
+                                                                                    '0',
+                                                                                  ),
+                                                                                );
+                                                                                setState(() {
+                                                                                  _model.vencimentoInterno = _model.equipVencimentoInternoAnos;
+                                                                                  _model.vencimentoExterno = _model.equipVencimentoExternoAnos;
+                                                                                });
+                                                                              }
+                                                                              setState(() {});
                                                                             },
                                                                             child:
                                                                                 Icon(
@@ -3819,6 +3855,94 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                             ),
                                           ),
                                         ),
+                                        if (((_model.inspView?.interna !=
+                                                        null &&
+                                                    _model.inspView?.interna !=
+                                                        '') &&
+                                                (_model.inspView?.interna !=
+                                                    '0')) ||
+                                            ((_model.inspView?.externa !=
+                                                        null &&
+                                                    _model.inspView?.externa !=
+                                                        '') &&
+                                                (_model.inspView?.externa !=
+                                                    '0')))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0.0, 20.0, 0.0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0x44E65454),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 20.0, 20.0, 20.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    if ((_model.inspView
+                                                                    ?.interna !=
+                                                                null &&
+                                                            _model.inspView
+                                                                    ?.interna !=
+                                                                '') &&
+                                                        (_model.inspView
+                                                                ?.interna !=
+                                                            '0'))
+                                                      Text(
+                                                        'Próxima Inspeção Interna deve ser realizada até: ${dateTimeFormat('d/M/y', _model.vencimentoInterno)}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                      ),
+                                                    if ((_model.inspView
+                                                                    ?.externa !=
+                                                                null &&
+                                                            _model.inspView
+                                                                    ?.externa !=
+                                                                '') &&
+                                                        (_model.inspView
+                                                                ?.externa !=
+                                                            '0'))
+                                                      Text(
+                                                        'Próxima Inspeção Externa deve ser realizada até: ${dateTimeFormat('d/M/y', _model.vencimentoExterno)}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                      ),
+                                                  ].divide(
+                                                      SizedBox(height: 15.0)),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         StreamBuilder<List<InspecoesRecord>>(
                                           stream: queryInspecoesRecord(
                                             parent: _model.inspView?.reference,

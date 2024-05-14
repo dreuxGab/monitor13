@@ -227,6 +227,18 @@ class EquipamentosModel extends FlutterFlowModel<EquipamentosWidget> {
 
   AplicabilidadeTubVPRecord? retornoAplicabilidadeTUBVP;
 
+  DateTime? vencimentoInterno;
+
+  DateTime? vencimentoExterno;
+
+  DateTime? equipVencimentoInternoMeses;
+
+  DateTime? equipVencimentoExternoMeses;
+
+  DateTime? equipVencimentoInternoAnos;
+
+  DateTime? equipVencimentoExternoAnos;
+
   @override
   void initState(BuildContext context) {}
 
