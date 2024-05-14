@@ -3121,7 +3121,44 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                       setState(() {
                                                                                         _model.inspView = listViewEquipamentosRecord;
                                                                                         _model.showInsp = true;
+                                                                                        _model.tipoEquipamentoListVIewPais = listViewEquipamentosRecord.tipo;
                                                                                       });
+                                                                                      if ((listViewEquipamentosRecord.tipo == 'Caldeira') || (listViewEquipamentosRecord.tipo == 'Tubulação Interligando Caldeira')) {
+                                                                                        _model.equipVencimentoInternoMesesMob = await actions.somaPeriodicidadeMeses(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewEquipamentosRecord.interna,
+                                                                                            '0',
+                                                                                          ),
+                                                                                        );
+                                                                                        _model.equipVencimentoExternoMesesMob = await actions.somaPeriodicidadeMeses(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewEquipamentosRecord.externa,
+                                                                                            '0',
+                                                                                          ),
+                                                                                        );
+                                                                                        setState(() {
+                                                                                          _model.vencimentoInterno = _model.equipVencimentoInternoMesesMob;
+                                                                                          _model.vencimentoExterno = _model.equipVencimentoExternoMesesMob;
+                                                                                        });
+                                                                                      } else {
+                                                                                        _model.equipVencimentoInternoAnosMob = await actions.somaPeriodicidadeAnos(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewEquipamentosRecord.interna,
+                                                                                            '0',
+                                                                                          ),
+                                                                                        );
+                                                                                        _model.equipVencimentoExternoAnosMob = await actions.somaPeriodicidadeAnos(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewEquipamentosRecord.externa,
+                                                                                            '0',
+                                                                                          ),
+                                                                                        );
+                                                                                        setState(() {
+                                                                                          _model.vencimentoInterno = _model.equipVencimentoInternoAnosMob;
+                                                                                          _model.vencimentoExterno = _model.equipVencimentoExternoAnosMob;
+                                                                                        });
+                                                                                      }
+                                                                                      setState(() {});
                                                                                     },
                                                                                     child: Icon(
                                                                                       Icons.remove_red_eye_outlined,

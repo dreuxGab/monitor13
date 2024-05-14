@@ -239,6 +239,14 @@ class EquipamentosModel extends FlutterFlowModel<EquipamentosWidget> {
 
   DateTime? equipVencimentoExternoAnos;
 
+  DateTime? equipVencimentoInternoMesesMob;
+
+  DateTime? equipVencimentoExternoMesesMob;
+
+  DateTime? equipVencimentoInternoAnosMob;
+
+  DateTime? equipVencimentoExternoAnosMob;
+
   @override
   void initState(BuildContext context) {}
 
