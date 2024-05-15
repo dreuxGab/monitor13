@@ -185,12 +185,8 @@ class _SlideWidgetState extends State<SlideWidget>
                                     fontWeight: FontWeight.w600,
                                   ),
                             ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onDoubleTap: () async {
+                            FFButtonWidget(
+                              onPressed: () async {
                                 await Future.wait([
                                   Future(() async {
                                     setState(() {
@@ -229,6 +225,8 @@ class _SlideWidgetState extends State<SlideWidget>
                                       'CALDEIRAS_NR',
                                       30,
                                     );
+                                  }),
+                                  Future(() async {
                                     _model.tubVPStructPara = await actions
                                         .getCollectionToStructTubVP(
                                       'TUB_VP_NR',
@@ -285,111 +283,29 @@ class _SlideWidgetState extends State<SlideWidget>
                                   FFAppState().isDataGotten = true;
                                   FFAppState().dataGotten = true;
                                 });
-
                                 setState(() {});
                               },
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = true;
-                                    _model.bloco3 = false;
-                                    _model.bloco4 = false;
-                                  });
-                                  await actions.getCollectionToStructTubCALD(
-                                    'TUB_CALD_NR',
-                                    30,
-                                  );
-                                  await actions.getCollectionToStructTANQUES(
-                                    'TANQUES_NR',
-                                    25,
-                                  );
-                                  await actions.getCollectionToStructCALDEIRAS(
-                                    'CALDEIRAS_NR',
-                                    30,
-                                  );
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = false;
-                                    _model.bloco3 = false;
-                                    _model.bloco4 = false;
-                                    _model.bloco22 = true;
-                                  });
-                                  await actions.getCollectionToStructTubVP(
-                                    'TUB_VP_NR',
-                                    850,
-                                  );
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = false;
-                                    _model.bloco3 = false;
-                                    _model.bloco4 = false;
-                                    _model.bloco22 = false;
-                                    _model.bloco23 = true;
-                                  });
-                                  _model.toStructReturn =
-                                      await actions.getCollectionToStruct(
-                                    'VP_NR',
-                                    3200,
-                                  );
-                                  setState(() {
-                                    FFAppState().VPNR = _model.toStructReturn!
-                                        .toList()
-                                        .cast<VpNrStruct>();
-                                  });
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = false;
-                                    _model.bloco3 = true;
-                                    _model.bloco4 = false;
-                                    _model.bloco23 = false;
-                                  });
-                                  await Future.delayed(
-                                      const Duration(milliseconds: 1500));
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = false;
-                                    _model.bloco3 = false;
-                                    _model.bloco4 = true;
-                                  });
-                                  await Future.delayed(
-                                      const Duration(milliseconds: 1500));
-                                  setState(() {
-                                    _model.bloco1 = false;
-                                    _model.bloco2 = false;
-                                    _model.bloco3 = false;
-                                    _model.bloco4 = false;
-                                    _model.concluido = true;
-                                  });
-                                  setState(() {
-                                    FFAppState().isDataGotten = true;
-                                    FFAppState().dataGotten = true;
-                                  });
-
-                                  setState(() {});
-                                },
-                                text: 'Iniciar',
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                              text: 'Iniciar',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           ].divide(SizedBox(height: 20.0)),
