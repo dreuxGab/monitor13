@@ -4199,50 +4199,11 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            if (equipINSPECOESLISTItem.vencimento !=
-                                                                                null)
-                                                                              Container(
-                                                                                width: 205.0,
-                                                                                decoration: BoxDecoration(),
-                                                                                child: Visibility(
-                                                                                  visible: (equipINSPECOESLISTItem.tipoInspecao != 'Inicial') && (equipINSPECOESLISTItem.vencimento != null) && (equipINSPECOESLISTItem.porAdHoc == null),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                                                                                    child: Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Text(
-                                                                                          'Vencimento:  ',
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Inter',
-                                                                                                fontSize: 14.0,
-                                                                                                letterSpacing: 0.0,
-                                                                                                fontWeight: FontWeight.w600,
-                                                                                              ),
-                                                                                        ),
-                                                                                        Text(
-                                                                                          valueOrDefault<String>(
-                                                                                            dateTimeFormat('d/M/y', equipINSPECOESLISTItem.vencimento),
-                                                                                            'Vencimento',
-                                                                                          ),
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Inter',
-                                                                                                color: FlutterFlowTheme.of(context).error,
-                                                                                                fontSize: 14.0,
-                                                                                                letterSpacing: 0.0,
-                                                                                                fontWeight: FontWeight.w600,
-                                                                                              ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
                                                                             Row(
                                                                               mainAxisSize: MainAxisSize.min,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(110.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     'Finalizada:',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4298,303 +4259,300 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                             decoration:
                                                                                 BoxDecoration(),
                                                                             child:
-                                                                                Visibility(
-                                                                              visible: equipINSPECOESLISTItem.porAdHoc == null,
-                                                                              child: Column(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                children: [
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Text(
+                                                                                  'Documentação:',
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                      ),
+                                                                                ),
+                                                                                if ((equipINSPECOESLISTItem.vpInicial123 == null) && (equipINSPECOESLISTItem.vpInicial45 == null) && (equipINSPECOESLISTItem.vpPeriodica123 == null) && (equipINSPECOESLISTItem.vpPeriodica45 == null) && (equipINSPECOESLISTItem.tanqueDoc == null) && (equipINSPECOESLISTItem.tubDoc == null) && (equipINSPECOESLISTItem.caldDoc == null) && (equipINSPECOESLISTItem.caldDocPeriod == null))
                                                                                   Text(
-                                                                                    'Documentação:',
+                                                                                    'Inspeção não iniciada.',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Inter',
+                                                                                          color: FlutterFlowTheme.of(context).error,
                                                                                           letterSpacing: 0.0,
-                                                                                          fontWeight: FontWeight.w600,
                                                                                         ),
                                                                                   ),
-                                                                                  if ((equipINSPECOESLISTItem.vpInicial123 == null) && (equipINSPECOESLISTItem.vpInicial45 == null) && (equipINSPECOESLISTItem.vpPeriodica123 == null) && (equipINSPECOESLISTItem.vpPeriodica45 == null) && (equipINSPECOESLISTItem.tanqueDoc == null) && (equipINSPECOESLISTItem.tubDoc == null) && (equipINSPECOESLISTItem.caldDoc == null) && (equipINSPECOESLISTItem.caldDocPeriod == null))
-                                                                                    Text(
-                                                                                      'Inspeção não iniciada.',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Inter',
-                                                                                            color: FlutterFlowTheme.of(context).error,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.vpInicial123 != null)
-                                                                                    StreamBuilder<LvVpInicialIIiIiiDocRecord>(
-                                                                                      stream: LvVpInicialIIiIiiDocRecord.getDocument(equipINSPECOESLISTItem.vpInicial123!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                if (equipINSPECOESLISTItem.vpInicial123 != null)
+                                                                                  StreamBuilder<LvVpInicialIIiIiiDocRecord>(
+                                                                                    stream: LvVpInicialIIiIiiDocRecord.getDocument(equipINSPECOESLISTItem.vpInicial123!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final vpDocInicial123LvVpInicialIIiIiiDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${vpDocInicial123LvVpInicialIIiIiiDocRecord.finalizada == true ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.vpInicial45 != null)
-                                                                                    StreamBuilder<LvVpInicialIvVDocRecord>(
-                                                                                      stream: LvVpInicialIvVDocRecord.getDocument(equipINSPECOESLISTItem.vpInicial45!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final vpDocInicial123LvVpInicialIIiIiiDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${vpDocInicial123LvVpInicialIIiIiiDocRecord.finalizada == true ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.vpInicial45 != null)
+                                                                                  StreamBuilder<LvVpInicialIvVDocRecord>(
+                                                                                    stream: LvVpInicialIvVDocRecord.getDocument(equipINSPECOESLISTItem.vpInicial45!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final vpDocInicial45LvVpInicialIvVDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${vpDocInicial45LvVpInicialIvVDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.vpPeriodica123 != null)
-                                                                                    StreamBuilder<LvVpPeriodicaIIiIiiDocRecord>(
-                                                                                      stream: LvVpPeriodicaIIiIiiDocRecord.getDocument(equipINSPECOESLISTItem.vpPeriodica123!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final vpDocInicial45LvVpInicialIvVDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${vpDocInicial45LvVpInicialIvVDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.vpPeriodica123 != null)
+                                                                                  StreamBuilder<LvVpPeriodicaIIiIiiDocRecord>(
+                                                                                    stream: LvVpPeriodicaIIiIiiDocRecord.getDocument(equipINSPECOESLISTItem.vpPeriodica123!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final vpDocPeriodica123LvVpPeriodicaIIiIiiDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${vpDocPeriodica123LvVpPeriodicaIIiIiiDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.vpPeriodica45 != null)
-                                                                                    StreamBuilder<LvVpPeriodicaIvVDocRecord>(
-                                                                                      stream: LvVpPeriodicaIvVDocRecord.getDocument(equipINSPECOESLISTItem.vpPeriodica45!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final vpDocPeriodica123LvVpPeriodicaIIiIiiDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${vpDocPeriodica123LvVpPeriodicaIIiIiiDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.vpPeriodica45 != null)
+                                                                                  StreamBuilder<LvVpPeriodicaIvVDocRecord>(
+                                                                                    stream: LvVpPeriodicaIvVDocRecord.getDocument(equipINSPECOESLISTItem.vpPeriodica45!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final vpDocPeriodica45LvVpPeriodicaIvVDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${vpDocPeriodica45LvVpPeriodicaIvVDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.tanqueDoc != null)
-                                                                                    StreamBuilder<LvTanqueDocDocRecord>(
-                                                                                      stream: LvTanqueDocDocRecord.getDocument(equipINSPECOESLISTItem.tanqueDoc!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final vpDocPeriodica45LvVpPeriodicaIvVDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${vpDocPeriodica45LvVpPeriodicaIvVDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.tanqueDoc != null)
+                                                                                  StreamBuilder<LvTanqueDocDocRecord>(
+                                                                                    stream: LvTanqueDocDocRecord.getDocument(equipINSPECOESLISTItem.tanqueDoc!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final tanqueDocLvTanqueDocDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${tanqueDocLvTanqueDocDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.tubDoc != null)
-                                                                                    StreamBuilder<LvTubDocDocRecord>(
-                                                                                      stream: LvTubDocDocRecord.getDocument(equipINSPECOESLISTItem.tubDoc!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final tanqueDocLvTanqueDocDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${tanqueDocLvTanqueDocDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.tubDoc != null)
+                                                                                  StreamBuilder<LvTubDocDocRecord>(
+                                                                                    stream: LvTubDocDocRecord.getDocument(equipINSPECOESLISTItem.tubDoc!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final tubDocLvTubDocDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${tubDocLvTubDocDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.caldDoc != null)
-                                                                                    StreamBuilder<LvCaldInicialDocRecord>(
-                                                                                      stream: LvCaldInicialDocRecord.getDocument(equipINSPECOESLISTItem.caldDoc!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final tubDocLvTubDocDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${tubDocLvTubDocDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.caldDoc != null)
+                                                                                  StreamBuilder<LvCaldInicialDocRecord>(
+                                                                                    stream: LvCaldInicialDocRecord.getDocument(equipINSPECOESLISTItem.caldDoc!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final caldDocLvCaldInicialDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${caldDocLvCaldInicialDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.caldDocPeriod != null)
-                                                                                    StreamBuilder<LvCaldPeriodicaRecord>(
-                                                                                      stream: LvCaldPeriodicaRecord.getDocument(equipINSPECOESLISTItem.caldDocPeriod!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
+                                                                                      }
+                                                                                      final caldDocLvCaldInicialDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${caldDocLvCaldInicialDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.caldDocPeriod != null)
+                                                                                  StreamBuilder<LvCaldPeriodicaRecord>(
+                                                                                    stream: LvCaldPeriodicaRecord.getDocument(equipINSPECOESLISTItem.caldDocPeriod!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
                                                                                               ),
                                                                                             ),
-                                                                                          );
-                                                                                        }
-                                                                                        final caldDocPeriodLvCaldPeriodicaRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${caldDocPeriodLvCaldPeriodicaRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
                                                                                           ),
                                                                                         );
-                                                                                      },
-                                                                                    ),
-                                                                                ].divide(SizedBox(height: 10.0)),
-                                                                              ),
+                                                                                      }
+                                                                                      final caldDocPeriodLvCaldPeriodicaRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${caldDocPeriodLvCaldPeriodicaRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                              ].divide(SizedBox(height: 10.0)),
                                                                             ),
                                                                           ),
                                                                           Container(
@@ -4603,21 +4561,184 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                             decoration:
                                                                                 BoxDecoration(),
                                                                             child:
-                                                                                Visibility(
-                                                                              visible: equipINSPECOESLISTItem.porAdHoc == null,
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Text(
+                                                                                  (_model.tipoEquipamentoListVIewPais == 'Tanque') || (_model.tipoEquipamentoListVIewPais == 'Tubulação Interligando Vaso de Pressão') || (_model.tipoEquipamentoListVIewPais == 'Tubulação Interligando Caldeira') ? 'Instalação / Ex. Geral:' : 'Instalação:',
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                      ),
+                                                                                ),
+                                                                                if ((equipINSPECOESLISTItem.vpInstal == null) && (equipINSPECOESLISTItem.tanqueInstal == null) && (equipINSPECOESLISTItem.tubInstal == null) && (equipINSPECOESLISTItem.caldInstal == null))
+                                                                                  Text(
+                                                                                    'Inspeção não iniciada.',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Inter',
+                                                                                          color: FlutterFlowTheme.of(context).error,
+                                                                                          letterSpacing: 0.0,
+                                                                                        ),
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.vpInstal != null)
+                                                                                  StreamBuilder<LvVpInstalacoesRecord>(
+                                                                                    stream: LvVpInstalacoesRecord.getDocument(equipINSPECOESLISTItem.vpInstal!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                      final vpInstalacaoLvVpInstalacoesRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${vpInstalacaoLvVpInstalacoesRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.tanqueInstal != null)
+                                                                                  StreamBuilder<LvTanqueInstalDocRecord>(
+                                                                                    stream: LvTanqueInstalDocRecord.getDocument(equipINSPECOESLISTItem.tanqueInstal!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                      final tanqueInstalacaoLvTanqueInstalDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${tanqueInstalacaoLvTanqueInstalDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.tubInstal != null)
+                                                                                  StreamBuilder<LvTubInstalDocRecord>(
+                                                                                    stream: LvTubInstalDocRecord.getDocument(equipINSPECOESLISTItem.tubInstal!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                      final tubInstalacaoLvTubInstalDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${tubInstalacaoLvTubInstalDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                if (equipINSPECOESLISTItem.caldInstal != null)
+                                                                                  StreamBuilder<LvCaldIntalDocRecord>(
+                                                                                    stream: LvCaldIntalDocRecord.getDocument(equipINSPECOESLISTItem.caldInstal!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50.0,
+                                                                                            height: 50.0,
+                                                                                            child: CircularProgressIndicator(
+                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                      final caldInstalLvCaldIntalDocRecord = snapshot.data!;
+                                                                                      return Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            'Finalizada: ${caldInstalLvCaldIntalDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                            'Inspeção não iniciada.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Inter',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                              ].divide(SizedBox(height: 10.0)),
+                                                                            ),
+                                                                          ),
+                                                                          if ((_model.tipoEquipamentoListVIewPais != 'Tanque') &&
+                                                                              (_model.tipoEquipamentoListVIewPais != 'Tubulação Interligando Vaso de Pressão') &&
+                                                                              (_model.tipoEquipamentoListVIewPais != 'Tubulação Interligando Caldeira'))
+                                                                            Container(
+                                                                              decoration: BoxDecoration(),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Text(
-                                                                                    (_model.tipoEquipamentoListVIewPais == 'Tanque') || (_model.tipoEquipamentoListVIewPais == 'Tubulação Interligando Vaso de Pressão') || (_model.tipoEquipamentoListVIewPais == 'Tubulação Interligando Caldeira') ? 'Instalação / Ex. Geral:' : 'Instalação:',
+                                                                                    'Ex. Geral:',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Inter',
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.w600,
                                                                                         ),
                                                                                   ),
-                                                                                  if ((equipINSPECOESLISTItem.vpInstal == null) && (equipINSPECOESLISTItem.tanqueInstal == null) && (equipINSPECOESLISTItem.tubInstal == null) && (equipINSPECOESLISTItem.caldInstal == null))
+                                                                                  if ((equipINSPECOESLISTItem.vpExameGeral == null) && (equipINSPECOESLISTItem.caldExgeral == null))
                                                                                     Text(
                                                                                       'Inspeção não iniciada.',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4626,9 +4747,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                             letterSpacing: 0.0,
                                                                                           ),
                                                                                     ),
-                                                                                  if (equipINSPECOESLISTItem.vpInstal != null)
-                                                                                    StreamBuilder<LvVpInstalacoesRecord>(
-                                                                                      stream: LvVpInstalacoesRecord.getDocument(equipINSPECOESLISTItem.vpInstal!),
+                                                                                  if (equipINSPECOESLISTItem.caldExgeral != null)
+                                                                                    StreamBuilder<LvCaldeiraExGeralDocRecord>(
+                                                                                      stream: LvCaldeiraExGeralDocRecord.getDocument(equipINSPECOESLISTItem.caldExgeral!),
                                                                                       builder: (context, snapshot) {
                                                                                         // Customize what your widget looks like when it's loading.
                                                                                         if (!snapshot.hasData) {
@@ -4644,12 +4765,12 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        final vpInstalacaoLvVpInstalacoesRecord = snapshot.data!;
+                                                                                        final caldExGeralLvCaldeiraExGeralDocRecord = snapshot.data!;
                                                                                         return Container(
                                                                                           decoration: BoxDecoration(),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
-                                                                                              'Finalizada: ${vpInstalacaoLvVpInstalacoesRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                              'Finalizada: ${caldExGeralLvCaldeiraExGeralDocRecord.finalizada ? 'Sim' : 'Não'}',
                                                                                               'Inspeção não iniciada.',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4660,9 +4781,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                         );
                                                                                       },
                                                                                     ),
-                                                                                  if (equipINSPECOESLISTItem.tanqueInstal != null)
-                                                                                    StreamBuilder<LvTanqueInstalDocRecord>(
-                                                                                      stream: LvTanqueInstalDocRecord.getDocument(equipINSPECOESLISTItem.tanqueInstal!),
+                                                                                  if (equipINSPECOESLISTItem.vpExameGeral != null)
+                                                                                    StreamBuilder<LvVpExGeralDocRecord>(
+                                                                                      stream: LvVpExGeralDocRecord.getDocument(equipINSPECOESLISTItem.vpExameGeral!),
                                                                                       builder: (context, snapshot) {
                                                                                         // Customize what your widget looks like when it's loading.
                                                                                         if (!snapshot.hasData) {
@@ -4678,80 +4799,12 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        final tanqueInstalacaoLvTanqueInstalDocRecord = snapshot.data!;
+                                                                                        final vpExGeralLvVpExGeralDocRecord = snapshot.data!;
                                                                                         return Container(
                                                                                           decoration: BoxDecoration(),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
-                                                                                              'Finalizada: ${tanqueInstalacaoLvTanqueInstalDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
-                                                                                          ),
-                                                                                        );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.tubInstal != null)
-                                                                                    StreamBuilder<LvTubInstalDocRecord>(
-                                                                                      stream: LvTubInstalDocRecord.getDocument(equipINSPECOESLISTItem.tubInstal!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          );
-                                                                                        }
-                                                                                        final tubInstalacaoLvTubInstalDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${tubInstalacaoLvTubInstalDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                              'Inspeção não iniciada.',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Inter',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
-                                                                                          ),
-                                                                                        );
-                                                                                      },
-                                                                                    ),
-                                                                                  if (equipINSPECOESLISTItem.caldInstal != null)
-                                                                                    StreamBuilder<LvCaldIntalDocRecord>(
-                                                                                      stream: LvCaldIntalDocRecord.getDocument(equipINSPECOESLISTItem.caldInstal!),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 50.0,
-                                                                                              height: 50.0,
-                                                                                              child: CircularProgressIndicator(
-                                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                  FlutterFlowTheme.of(context).primary,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          );
-                                                                                        }
-                                                                                        final caldInstalLvCaldIntalDocRecord = snapshot.data!;
-                                                                                        return Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              'Finalizada: ${caldInstalLvCaldIntalDocRecord.finalizada ? 'Sim' : 'Não'}',
+                                                                                              'Finalizada: ${vpExGeralLvVpExGeralDocRecord.finalizada ? 'Sim' : 'Não'}',
                                                                                               'Inspeção não iniciada.',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4763,107 +4816,6 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                                       },
                                                                                     ),
                                                                                 ].divide(SizedBox(height: 10.0)),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          if ((_model.tipoEquipamentoListVIewPais != 'Tanque') &&
-                                                                              (_model.tipoEquipamentoListVIewPais != 'Tubulação Interligando Vaso de Pressão') &&
-                                                                              (_model.tipoEquipamentoListVIewPais != 'Tubulação Interligando Caldeira'))
-                                                                            Container(
-                                                                              decoration: BoxDecoration(),
-                                                                              child: Visibility(
-                                                                                visible: equipINSPECOESLISTItem.porAdHoc == null,
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                  children: [
-                                                                                    Text(
-                                                                                      'Ex. Geral:',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Inter',
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.w600,
-                                                                                          ),
-                                                                                    ),
-                                                                                    if ((equipINSPECOESLISTItem.vpExameGeral == null) && (equipINSPECOESLISTItem.caldExgeral == null))
-                                                                                      Text(
-                                                                                        'Inspeção não iniciada.',
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Inter',
-                                                                                              color: FlutterFlowTheme.of(context).error,
-                                                                                              letterSpacing: 0.0,
-                                                                                            ),
-                                                                                      ),
-                                                                                    if (equipINSPECOESLISTItem.caldExgeral != null)
-                                                                                      StreamBuilder<LvCaldeiraExGeralDocRecord>(
-                                                                                        stream: LvCaldeiraExGeralDocRecord.getDocument(equipINSPECOESLISTItem.caldExgeral!),
-                                                                                        builder: (context, snapshot) {
-                                                                                          // Customize what your widget looks like when it's loading.
-                                                                                          if (!snapshot.hasData) {
-                                                                                            return Center(
-                                                                                              child: SizedBox(
-                                                                                                width: 50.0,
-                                                                                                height: 50.0,
-                                                                                                child: CircularProgressIndicator(
-                                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            );
-                                                                                          }
-                                                                                          final caldExGeralLvCaldeiraExGeralDocRecord = snapshot.data!;
-                                                                                          return Container(
-                                                                                            decoration: BoxDecoration(),
-                                                                                            child: Text(
-                                                                                              valueOrDefault<String>(
-                                                                                                'Finalizada: ${caldExGeralLvCaldeiraExGeralDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                                'Inspeção não iniciada.',
-                                                                                              ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Inter',
-                                                                                                    letterSpacing: 0.0,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          );
-                                                                                        },
-                                                                                      ),
-                                                                                    if (equipINSPECOESLISTItem.vpExameGeral != null)
-                                                                                      StreamBuilder<LvVpExGeralDocRecord>(
-                                                                                        stream: LvVpExGeralDocRecord.getDocument(equipINSPECOESLISTItem.vpExameGeral!),
-                                                                                        builder: (context, snapshot) {
-                                                                                          // Customize what your widget looks like when it's loading.
-                                                                                          if (!snapshot.hasData) {
-                                                                                            return Center(
-                                                                                              child: SizedBox(
-                                                                                                width: 50.0,
-                                                                                                height: 50.0,
-                                                                                                child: CircularProgressIndicator(
-                                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            );
-                                                                                          }
-                                                                                          final vpExGeralLvVpExGeralDocRecord = snapshot.data!;
-                                                                                          return Container(
-                                                                                            decoration: BoxDecoration(),
-                                                                                            child: Text(
-                                                                                              valueOrDefault<String>(
-                                                                                                'Finalizada: ${vpExGeralLvVpExGeralDocRecord.finalizada ? 'Sim' : 'Não'}',
-                                                                                                'Inspeção não iniciada.',
-                                                                                              ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Inter',
-                                                                                                    letterSpacing: 0.0,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          );
-                                                                                        },
-                                                                                      ),
-                                                                                  ].divide(SizedBox(height: 10.0)),
-                                                                                ),
                                                                               ),
                                                                             ),
                                                                           if (equipINSPECOESLISTItem.porAdHoc ==
@@ -6100,8 +6052,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText:
-                                                          '*Equipamento:',
+                                                      labelText: '*Descrição:',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -6824,212 +6775,570 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                     isMultiSelect: false,
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .serieInputTextController,
-                                                    focusNode: _model
-                                                        .serieInputFocusNode,
-                                                    autofocus: true,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText: 'N° de série:',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10.0,
+                                                                20.0,
+                                                                0.0,
+                                                                20.0),
+                                                    child: Text(
+                                                      '*Status:',
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 2.0,
-                                                        ),
-                                                    validator: _model
-                                                        .serieInputTextControllerValidator
-                                                        .asValidator(context),
                                                   ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: TextFormField(
+                                                  child: FlutterFlowDropDown<
+                                                      String>(
                                                     controller: _model
-                                                        .descricaoInputTextController,
-                                                    focusNode: _model
-                                                        .descricaoInputFocusNode,
-                                                    autofocus: true,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText: 'Descrição:',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                                            .statusDropDownValueController ??=
+                                                        FormFieldController<
+                                                            String>(null),
+                                                    options: [
+                                                      'Em operação',
+                                                      'Inativo',
+                                                      'A ser fabricado',
+                                                      'Em início de operação'
+                                                    ],
+                                                    onChanged: (val) =>
+                                                        setState(() => _model
+                                                                .statusDropDownValue =
+                                                            val),
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: 50.0,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
-                                                          lineHeight: 2.0,
                                                         ),
-                                                    validator: _model
-                                                        .descricaoInputTextControllerValidator
-                                                        .asValidator(context),
+                                                    hintText: 'Selecione',
+                                                    icon: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_down_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    borderWidth: 2.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 4.0,
+                                                                16.0, 4.0),
+                                                    hidesUnderline: true,
+                                                    isOverButton: true,
+                                                    isSearchable: false,
+                                                    isMultiSelect: false,
                                                   ),
                                                 ),
+                                                if (_model
+                                                        .statusDropDownValue ==
+                                                    'A ser fabricado')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .documentacaoInputTextController,
+                                                      focusNode: _model
+                                                          .documentacaoInputFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'Documentação de requisição:',
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        errorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            lineHeight: 2.0,
+                                                          ),
+                                                      validator: _model
+                                                          .documentacaoInputTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                if (_model
+                                                        .statusDropDownValue !=
+                                                    'A ser fabricado')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .fabricanteInputTextController,
+                                                      focusNode: _model
+                                                          .fabricanteInputFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'Fabricante:',
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        errorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            lineHeight: 2.0,
+                                                          ),
+                                                      validator: _model
+                                                          .fabricanteInputTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                if (_model
+                                                        .statusDropDownValue !=
+                                                    'A ser fabricado')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .fornecedorInputTextController,
+                                                      focusNode: _model
+                                                          .fornecedorInputFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'Fornecedor:',
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        errorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            lineHeight: 2.0,
+                                                          ),
+                                                      validator: _model
+                                                          .fornecedorInputTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                if (_model
+                                                        .statusDropDownValue !=
+                                                    'A ser fabricado')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .serieInputTextController,
+                                                      focusNode: _model
+                                                          .serieInputFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'N° de série:',
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        errorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            lineHeight: 2.0,
+                                                          ),
+                                                      validator: _model
+                                                          .serieInputTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -7130,408 +7439,6 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                         ),
                                                     validator: _model
                                                         .tagInputTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                20.0,
-                                                                0.0,
-                                                                20.0),
-                                                    child: Text(
-                                                      '*Status:',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: FlutterFlowDropDown<
-                                                      String>(
-                                                    controller: _model
-                                                            .statusDropDownValueController ??=
-                                                        FormFieldController<
-                                                            String>(null),
-                                                    options: [
-                                                      'Em operação',
-                                                      'Inativo',
-                                                      'A ser fabricado',
-                                                      'Em início de operação'
-                                                    ],
-                                                    onChanged: (val) =>
-                                                        setState(() => _model
-                                                                .statusDropDownValue =
-                                                            val),
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    height: 50.0,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    hintText: 'Selecione',
-                                                    icon: Icon(
-                                                      Icons
-                                                          .keyboard_arrow_down_rounded,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    elevation: 2.0,
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    borderWidth: 2.0,
-                                                    borderRadius: 8.0,
-                                                    margin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 4.0,
-                                                                16.0, 4.0),
-                                                    hidesUnderline: true,
-                                                    isOverButton: true,
-                                                    isSearchable: false,
-                                                    isMultiSelect: false,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .documentacaoInputTextController,
-                                                    focusNode: _model
-                                                        .documentacaoInputFocusNode,
-                                                    autofocus: true,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          'Documentação de requisição:',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 2.0,
-                                                        ),
-                                                    validator: _model
-                                                        .documentacaoInputTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .fabricanteInputTextController,
-                                                    focusNode: _model
-                                                        .fabricanteInputFocusNode,
-                                                    autofocus: true,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText: 'Fabricante:',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 2.0,
-                                                        ),
-                                                    validator: _model
-                                                        .fabricanteInputTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .fornecedorInputTextController,
-                                                    focusNode: _model
-                                                        .fornecedorInputFocusNode,
-                                                    autofocus: true,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText: 'Fornecedor:',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 2.0,
-                                                        ),
-                                                    validator: _model
-                                                        .fornecedorInputTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -7642,11 +7549,9 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                             _model.serieInputTextController.text,
                                                                             'Série',
                                                                           ),
-                                                                          descricao:
-                                                                              valueOrDefault<String>(
-                                                                            _model.descricaoInputTextController.text,
-                                                                            'Descrição',
-                                                                          ),
+                                                                          descricao: _model
+                                                                              .nameInputCreateEquipTextController
+                                                                              .text,
                                                                           tagNumber:
                                                                               valueOrDefault<String>(
                                                                             _model.tagInputTextController.text,
@@ -7698,15 +7603,6 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           .nameInputCreateEquipTextController
                                                                           ?.clear();
                                                                       _model
-                                                                          .serieInputTextController
-                                                                          ?.clear();
-                                                                      _model
-                                                                          .descricaoInputTextController
-                                                                          ?.clear();
-                                                                      _model
-                                                                          .tagInputTextController
-                                                                          ?.clear();
-                                                                      _model
                                                                           .documentacaoInputTextController
                                                                           ?.clear();
                                                                       _model
@@ -7740,7 +7636,6 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           false;
                                                                     });
                                                                   }
-
                                                                   setState(
                                                                       () {});
                                                                 },
