@@ -1621,86 +1621,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               MainAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .solidCircle,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                size: 15.0,
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Você:',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  (int.parse(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                    containerEquipamentosRecordList
-                                                                        .where((e) =>
-                                                                            e.criadoPor ==
-                                                                            currentUserEmail)
-                                                                        .toList()
-                                                                        .length
-                                                                        .toString(),
-                                                                    '0',
-                                                                  ))).toString(),
-                                                                  '0',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                             Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -1743,6 +1663,84 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         ),
                                                                   ),
                                                                 ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      (int.parse(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                        containerEquipamentosRecordList
+                                                                            .length
+                                                                            .toString(),
+                                                                        '0',
+                                                                      ))).toString(),
+                                                                      '0',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child: FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .solidCircle,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 15.0,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    'Você:',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                  ),
+                                                                ),
                                                                 Text(
                                                                   valueOrDefault<
                                                                       String>(
@@ -1750,6 +1748,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         valueOrDefault<
                                                                             String>(
                                                                       containerEquipamentosRecordList
+                                                                          .where((e) =>
+                                                                              e.criadoPor ==
+                                                                              currentUserEmail)
+                                                                          .toList()
                                                                           .length
                                                                           .toString(),
                                                                       '0',
@@ -2651,6 +2653,43 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         CrossAxisAlignment
                                                                             .end,
                                                                     children: [
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.min,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.solidCircle,
+                                                                              color: Color(0x69FCC26F),
+                                                                              size: 15.0,
+                                                                            ),
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                15.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              'Total',
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Inter',
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
@@ -2671,55 +2710,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
-                                                                            15.0,
+                                                                            0.0,
                                                                             0.0),
                                                                         child:
                                                                             Text(
                                                                           'Você',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Inter',
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.bold,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .solidCircle,
-                                                                          color:
-                                                                              Color(0x69FCC26F),
-                                                                          size:
-                                                                              15.0,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Total',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -2867,65 +2862,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         FaIcon(
                                                                       FontAwesomeIcons
                                                                           .solidCircle,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        AuthUserStreamWidget(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          (int.parse(
-                                                                              valueOrDefault<String>(
-                                                                            _model.aplicabilidadeVP?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                            '0',
-                                                                          ))).toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Inter',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidCircle,
                                                                       color: Color(
                                                                           0x69FCC26F),
                                                                       size:
@@ -2957,6 +2893,65 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AuthUserStreamWidget(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          (int.parse(
+                                                                              valueOrDefault<String>(
+                                                                            _model.aplicabilidadeVP?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                            '0',
+                                                                          ))).toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -3083,65 +3078,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         FaIcon(
                                                                       FontAwesomeIcons
                                                                           .solidCircle,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        AuthUserStreamWidget(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          (int.parse(
-                                                                              valueOrDefault<String>(
-                                                                            _model.aplicabilidadeCaldeira?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                            '0',
-                                                                          ))).toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Inter',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidCircle,
                                                                       color: Color(
                                                                           0x69FCC26F),
                                                                       size:
@@ -3173,6 +3109,65 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AuthUserStreamWidget(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          (int.parse(
+                                                                              valueOrDefault<String>(
+                                                                            _model.aplicabilidadeCaldeira?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                            '0',
+                                                                          ))).toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -3299,65 +3294,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         FaIcon(
                                                                       FontAwesomeIcons
                                                                           .solidCircle,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        AuthUserStreamWidget(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          (int.parse(
-                                                                              valueOrDefault<String>(
-                                                                            _model.aplicabilidadeTANQUE?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                            '0',
-                                                                          ))).toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Inter',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidCircle,
                                                                       color: Color(
                                                                           0x69FCC26F),
                                                                       size:
@@ -3389,6 +3325,65 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AuthUserStreamWidget(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          (int.parse(
+                                                                              valueOrDefault<String>(
+                                                                            _model.aplicabilidadeTANQUE?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                            '0',
+                                                                          ))).toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -3515,69 +3510,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         FaIcon(
                                                                       FontAwesomeIcons
                                                                           .solidCircle,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        AuthUserStreamWidget(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          (int.parse(valueOrDefault<String>(
-                                                                                    _model.aplicabilidadTUBVP?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                                    '0',
-                                                                                  )) +
-                                                                                  int.parse(valueOrDefault<String>(
-                                                                                    _model.aplicabilidadeTUBCALDEIRA?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                                    '0',
-                                                                                  )))
-                                                                              .toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Inter',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidCircle,
                                                                       color: Color(
                                                                           0x69FCC26F),
                                                                       size:
@@ -3609,6 +3541,69 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AuthUserStreamWidget(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          (int.parse(valueOrDefault<String>(
+                                                                                    _model.aplicabilidadTUBVP?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                                    '0',
+                                                                                  )) +
+                                                                                  int.parse(valueOrDefault<String>(
+                                                                                    _model.aplicabilidadeTUBCALDEIRA?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                                    '0',
+                                                                                  )))
+                                                                              .toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -3735,65 +3730,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         FaIcon(
                                                                       FontAwesomeIcons
                                                                           .solidCircle,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        AuthUserStreamWidget(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          (int.parse(
-                                                                              valueOrDefault<String>(
-                                                                            _model.aplicabilidadeOUTROS?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
-                                                                            '0',
-                                                                          ))).toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Inter',
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidCircle,
                                                                       color: Color(
                                                                           0x69FCC26F),
                                                                       size:
@@ -3825,6 +3761,65 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AuthUserStreamWidget(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          (int.parse(
+                                                                              valueOrDefault<String>(
+                                                                            _model.aplicabilidadeOUTROS?.where((e) => e.avaliador == currentUserDisplayName).toList()?.length?.toString(),
+                                                                            '0',
+                                                                          ))).toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
