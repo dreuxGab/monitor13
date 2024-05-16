@@ -264,10 +264,25 @@ class AplicabilidadeTubVPRecord extends FirestoreRecord {
   String get pressao => _pressao ?? '';
   bool hasPressao() => _pressao != null;
 
+  // "Volume" field.
+  String? _volume;
+  String get volume => _volume ?? '';
+  bool hasVolume() => _volume != null;
+
   // "PV" field.
   String? _pv;
   String get pv => _pv ?? '';
   bool hasPv() => _pv != null;
+
+  // "PressaoUnidade" field.
+  String? _pressaoUnidade;
+  String get pressaoUnidade => _pressaoUnidade ?? '';
+  bool hasPressaoUnidade() => _pressaoUnidade != null;
+
+  // "VolumeUnidade" field.
+  String? _volumeUnidade;
+  String get volumeUnidade => _volumeUnidade ?? '';
+  bool hasVolumeUnidade() => _volumeUnidade != null;
 
   void _initializeFields() {
     _index = snapshotData['Index'] as String?;
@@ -334,7 +349,10 @@ class AplicabilidadeTubVPRecord extends FirestoreRecord {
     _serieEquipamento = snapshotData['Serie_Equipamento'] as String?;
     _fluido = snapshotData['Fluido'] as String?;
     _pressao = snapshotData['Pressao'] as String?;
+    _volume = snapshotData['Volume'] as String?;
     _pv = snapshotData['PV'] as String?;
+    _pressaoUnidade = snapshotData['PressaoUnidade'] as String?;
+    _volumeUnidade = snapshotData['VolumeUnidade'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -418,7 +436,10 @@ Map<String, dynamic> createAplicabilidadeTubVPRecordData({
   String? serieEquipamento,
   String? fluido,
   String? pressao,
+  String? volume,
   String? pv,
+  String? pressaoUnidade,
+  String? volumeUnidade,  
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -471,7 +492,10 @@ Map<String, dynamic> createAplicabilidadeTubVPRecordData({
       'Serie_Equipamento': serieEquipamento,
       'Fluido': fluido,
       'Pressao': pressao,
+      'Volume': volume,
       'PV': pv,
+      'PressaoUnidade': pressaoUnidade,
+      'VolumeUnidade': volumeUnidade,      
     }.withoutNulls,
   );
 
@@ -538,7 +562,10 @@ class AplicabilidadeTubVPRecordDocumentEquality
         e1?.serieEquipamento == e2?.serieEquipamento &&
         e1?.fluido == e2?.fluido &&
         e1?.pressao == e2?.pressao &&
-        e1?.pv == e2?.pv;
+        e1?.volume == e2?.volume &&
+        e1?.pv == e2?.pv &&
+        e1?.pressaoUnidade == e2?.pressaoUnidade &&
+        e1?.volumeUnidade == e2?.volumeUnidade;
   }
 
   @override
@@ -588,7 +615,10 @@ class AplicabilidadeTubVPRecordDocumentEquality
         e?.serieEquipamento,
         e?.fluido,
         e?.pressao,
-        e?.pv
+        e?.volume,
+        e?.pv,
+        e?.pressaoUnidade,
+        e?.volumeUnidade,
       ]);
 
   @override

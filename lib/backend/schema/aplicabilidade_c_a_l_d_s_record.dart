@@ -26,6 +26,16 @@ class AplicabilidadeCALDSRecord extends FirestoreRecord {
   String get volumeMenorCemLitros => _volumeMenorCemLitros ?? '';
   bool hasVolumeMenorCemLitros() => _volumeMenorCemLitros != null;
 
+  // "Pressao" field.
+  String? _pressao;
+  String get pressao => _pressao ?? '';
+  bool hasPressao() => _pressao != null;
+  
+  // "Pressao" field.
+  String? _pressaoUnidade;
+  String get pressaoUnidade => _pressaoUnidade ?? '';
+  bool hasPressaoUnidade() => _pressaoUnidade != null;
+
   // "Pressao_maior_zero_meia_um" field.
   String? _pressaoMaiorZeroMeiaUm;
   String get pressaoMaiorZeroMeiaUm => _pressaoMaiorZeroMeiaUm ?? '';
@@ -157,6 +167,8 @@ class AplicabilidadeCALDSRecord extends FirestoreRecord {
   void _initializeFields() {
     _index = snapshotData['Index'] as String?;
     _volumeMenorCemLitros = snapshotData['Volume_menor_cem_litros'] as String?;
+    _pressao = snapshotData['Pressao'] as String?;
+    _pressaoUnidade = snapshotData['PressaoUnidade'] as String?;
     _pressaoMaiorZeroMeiaUm =
         snapshotData['Pressao_maior_zero_meia_um'] as String?;
     _pressaoMaiorIgualDzNoveNove =
@@ -230,6 +242,8 @@ class AplicabilidadeCALDSRecord extends FirestoreRecord {
 Map<String, dynamic> createAplicabilidadeCALDSRecordData({
   String? index,
   String? volumeMenorCemLitros,
+  String? pressao,
+  String? pressaoUnidade,
   String? pressaoMaiorZeroMeiaUm,
   String? pressaoMaiorIgualDzNoveNove,
   String? sPIEServicoProprioInspecaoEquipamento,
@@ -259,6 +273,8 @@ Map<String, dynamic> createAplicabilidadeCALDSRecordData({
     <String, dynamic>{
       'Index': index,
       'Volume_menor_cem_litros': volumeMenorCemLitros,
+      'Pressao': pressao,
+      'PressaoUnidade': pressaoUnidade,
       'Pressao_maior_zero_meia_um': pressaoMaiorZeroMeiaUm,
       'Pressao_maior_igual_dzNove_nove': pressaoMaiorIgualDzNoveNove,
       'SPIE_Servico_Proprio_Inspecao_Equipamento':
@@ -300,6 +316,8 @@ class AplicabilidadeCALDSRecordDocumentEquality
   bool equals(AplicabilidadeCALDSRecord? e1, AplicabilidadeCALDSRecord? e2) {
     return e1?.index == e2?.index &&
         e1?.volumeMenorCemLitros == e2?.volumeMenorCemLitros &&
+        e1?.pressao == e2?.pressao &&
+        e1?.pressaoUnidade == e2?.pressaoUnidade &&
         e1?.pressaoMaiorZeroMeiaUm == e2?.pressaoMaiorZeroMeiaUm &&
         e1?.pressaoMaiorIgualDzNoveNove == e2?.pressaoMaiorIgualDzNoveNove &&
         e1?.sPIEServicoProprioInspecaoEquipamento ==
@@ -334,6 +352,8 @@ class AplicabilidadeCALDSRecordDocumentEquality
   int hash(AplicabilidadeCALDSRecord? e) => const ListEquality().hash([
         e?.index,
         e?.volumeMenorCemLitros,
+        e?.pressao,
+        e?.pressaoUnidade,
         e?.pressaoMaiorZeroMeiaUm,
         e?.pressaoMaiorIgualDzNoveNove,
         e?.sPIEServicoProprioInspecaoEquipamento,
