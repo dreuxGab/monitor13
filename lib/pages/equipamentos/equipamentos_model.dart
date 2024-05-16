@@ -247,6 +247,21 @@ class EquipamentosModel extends FlutterFlowModel<EquipamentosWidget> {
 
   DateTime? equipVencimentoExternoAnosMob;
 
+
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeOUTROSRecord? editEquipRetornoOutros;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeTANQUESRecord? editEquipRetornoTanque;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeCALDSRecord? editEquipRetornoCald;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeTUBCALDSRecord? editEquipRetornoTubCald;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeTubVPRecord? editEquipRetornoTubVP;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AplicabilidadeVpRecord? editEquipRetornoVP;
+
+
   @override
   void initState(BuildContext context) {}
 

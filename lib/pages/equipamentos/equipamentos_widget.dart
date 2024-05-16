@@ -8570,7 +8570,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                           .documentacaoInputEditTextController,
                                                       focusNode: _model
                                                           .documentacaoInputEditFocusNode,
-                                                      autofocus: true,
+                                                      autofocus: false,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -8925,7 +8925,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                       focusNode: _model
                                                           .serieInputEditFocusNode,
                                                       autofocus: false,
-                                                      readOnly: true,
+                                                      readOnly: false,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -9040,7 +9040,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                     focusNode: _model
                                                         .tagInputEditFocusNode,
                                                     autofocus: false,
-                                                    readOnly: true,
+                                                    readOnly: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText: 'Tag number:',
@@ -9360,6 +9360,12 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           .dropDownEditEquipAreaValue,
                                                                       planta: _model
                                                                           .dropDownEditEquipPlantaValue,
+                                                                      serie: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagNumber: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
                                                                     ),
                                                                     ...mapToFirestore(
                                                                       {
@@ -9370,6 +9376,192 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                       },
                                                                     ),
                                                                   });
+                                                                  if ((_model.tipoDropDownEditValue != 'Caldeira') &&
+                                                                      (_model.tipoDropDownEditValue !=
+                                                                          'Tubulação Interligando Caldeira') &&
+                                                                      (_model.tipoDropDownEditValue !=
+                                                                          'Tubulação Interligando Vaso de Pressão') &&
+                                                                      (_model.tipoDropDownEditValue !=
+                                                                          'Vaso de Pressão') &&
+                                                                      (_model.tipoDropDownEditValue !=
+                                                                          'Tanque')) {
+                                                                    _model.editEquipRetornoOutros =
+                                                                        await queryAplicabilidadeOUTROSRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeOUTROSRecord) =>
+                                                                              aplicabilidadeOUTROSRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoOutros!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeOUTROSRecordData(
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
+                                                                  if (_model
+                                                                          .tipoDropDownEditValue ==
+                                                                      'Tanque') {
+                                                                    _model.editEquipRetornoTanque =
+                                                                        await queryAplicabilidadeTANQUESRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeTANQUESRecord) =>
+                                                                              aplicabilidadeTANQUESRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoTanque!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeTANQUESRecordData(
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
+                                                                  if (_model
+                                                                          .tipoDropDownEditValue ==
+                                                                      'Caldeira') {
+                                                                    _model.editEquipRetornoCald =
+                                                                        await queryAplicabilidadeCALDSRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeCALDSRecord) =>
+                                                                              aplicabilidadeCALDSRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoCald!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeCALDSRecordData(
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
+                                                                  if (_model
+                                                                          .tipoDropDownEditValue ==
+                                                                      'Tubulação Interligando Caldeira') {
+                                                                    _model.editEquipRetornoTubCald =
+                                                                        await queryAplicabilidadeTUBCALDSRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeTUBCALDSRecord) =>
+                                                                              aplicabilidadeTUBCALDSRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoTubCald!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeTUBCALDSRecordData(
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
+                                                                  if (_model
+                                                                          .tipoDropDownEditValue ==
+                                                                      'Tubulação Interligando Vaso de Pressão') {
+                                                                    _model.editEquipRetornoTubVP =
+                                                                        await queryAplicabilidadeTubVPRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeTubVPRecord) =>
+                                                                              aplicabilidadeTubVPRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoTubVP!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeTubVPRecordData(
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
+                                                                  if (_model
+                                                                          .tipoDropDownEditValue ==
+                                                                      'Vaso de Pressão') {
+                                                                    _model.editEquipRetornoVP =
+                                                                        await queryAplicabilidadeVpRecordOnce(
+                                                                      queryBuilder:
+                                                                          (aplicabilidadeVpRecord) =>
+                                                                              aplicabilidadeVpRecord.where(
+                                                                        'Equipamento',
+                                                                        isEqualTo: _model
+                                                                            .nameInputEditTextController
+                                                                            .text,
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    await _model
+                                                                        .editEquipRetornoVP!
+                                                                        .reference
+                                                                        .update(
+                                                                            createAplicabilidadeVpRecordData(
+                                                                      tagEquipamento: _model
+                                                                          .tagInputEditTextController
+                                                                          .text,
+                                                                      serieEquipamento: _model
+                                                                          .serieInputEditTextController
+                                                                          .text,
+                                                                    ));
+                                                                  }
                                                                   setState(() {
                                                                     _model
                                                                         .nameInputEditTextController
@@ -9382,6 +9574,12 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                         ?.clear();
                                                                     _model
                                                                         .fornecedorInputEditTextController
+                                                                        ?.clear();
+                                                                    _model
+                                                                        .serieInputEditTextController
+                                                                        ?.clear();
+                                                                    _model
+                                                                        .tagInputEditTextController
                                                                         ?.clear();
                                                                   });
                                                                   setState(() {
@@ -9405,6 +9603,8 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                     _model.editar =
                                                                         false;
                                                                   });
+                                                                  setState(
+                                                                      () {});
                                                                 },
                                                           text: 'Salvar',
                                                           options:
