@@ -1902,761 +1902,150 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                     Container(
                       height: MediaQuery.sizeOf(context).height * 1.0,
                       decoration: BoxDecoration(),
-                      child: PagedListView<DocumentSnapshot<Object?>?,
-                          EquipamentosRecord>.separated(
-                        pagingController: _model.setListViewController(
-                          EquipamentosRecord.collection
-                              .where(
-                                'Contrato',
-                                isEqualTo: FFAppState().contrato,
-                              )
-                              .where(
-                                'aptoRelatorio',
-                                isEqualTo: true,
-                              )
-                              .where(
-                                'Planta',
-                                isEqualTo: _model.dropDownValue1,
-                              )
-                              .where(
-                                'Area',
-                                isEqualTo: _model.dropDownValue2,
-                              )
-                              .where(
-                                'Unidade',
-                                isEqualTo: _model.dropDownValue3,
-                              )
-                              .where(
-                                'Tipo',
-                                isEqualTo: _model.dropDownValue4,
-                              )
-                              .where(
-                                'Status',
-                                isEqualTo: _model.dropDownValue5,
-                              )
-                              .orderBy('created_time', descending: true),
+                      child: StreamBuilder<List<EquipamentosRecord>>(
+                        stream: queryEquipamentosRecord(
+                          queryBuilder: (equipamentosRecord) =>
+                              equipamentosRecord
+                                  .where(
+                                    'Contrato',
+                                    isEqualTo: FFAppState().contrato,
+                                  )
+                                  .where(
+                                    'aptoRelatorio',
+                                    isEqualTo: true,
+                                  )
+                                  .where(
+                                    'Planta',
+                                    isEqualTo: _model.dropDownValue1,
+                                  )
+                                  .where(
+                                    'Area',
+                                    isEqualTo: _model.dropDownValue2,
+                                  )
+                                  .where(
+                                    'Unidade',
+                                    isEqualTo: _model.dropDownValue3,
+                                  )
+                                  .where(
+                                    'Tipo',
+                                    isEqualTo: _model.dropDownValue4,
+                                  )
+                                  .where(
+                                    'Status',
+                                    isEqualTo: _model.dropDownValue5,
+                                  )
+                                  .orderBy('created_time', descending: true),
                         ),
-                        padding: EdgeInsets.fromLTRB(
-                          0,
-                          12.0,
-                          0,
-                          20.0,
-                        ),
-                        primary: false,
-                        reverse: false,
-                        scrollDirection: Axis.vertical,
-                        separatorBuilder: (_, __) => SizedBox(height: 12.0),
-                        builderDelegate:
-                            PagedChildBuilderDelegate<EquipamentosRecord>(
-                          // Customize what your widget looks like when it's loading the first page.
-                          firstPageProgressIndicatorBuilder: (_) => Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          ),
-                          // Customize what your widget looks like when it's loading another page.
-                          newPageProgressIndicatorBuilder: (_) => Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          itemBuilder: (context, _, listViewIndex) {
-                            final listViewEquipamentosRecord = _model
-                                .listViewPagingController!
-                                .itemList![listViewIndex];
-                            return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              child: Container(
-                                width: double.infinity,
-                                constraints: BoxConstraints(
-                                  maxWidth: 570.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 2.0,
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
                                   ),
                                 ),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      if (valueOrDefault<bool>(
-                                        MediaQuery.sizeOf(context).width >=
-                                            1025.0,
-                                        true,
-                                      ))
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 12.0, 16.0, 12.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.14,
-                                                decoration: BoxDecoration(),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
+                              ),
+                            );
+                          }
+                          List<EquipamentosRecord>
+                              listViewEquipamentosRecordList = snapshot.data!;
+                          return ListView.separated(
+                            padding: EdgeInsets.fromLTRB(
+                              0,
+                              12.0,
+                              0,
+                              20.0,
+                            ),
+                            primary: false,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listViewEquipamentosRecordList.length,
+                            separatorBuilder: (_, __) => SizedBox(height: 12.0),
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewEquipamentosRecord =
+                                  listViewEquipamentosRecordList[listViewIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  constraints: BoxConstraints(
+                                    maxWidth: 570.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        if (valueOrDefault<bool>(
+                                          MediaQuery.sizeOf(context).width >=
+                                              1025.0,
+                                          true,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
                                                               .width *
-                                                          0.11,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0),
-                                                        child: SelectionArea(
-                                                            child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            listViewEquipamentosRecord
-                                                                .tipo,
-                                                            'Serqual - Consultoria em Engenharia LTDA',
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          maxLines: 2,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.1,
-                                                decoration: BoxDecoration(),
-                                                child: SelectionArea(
-                                                    child: Text(
-                                                  listViewEquipamentosRecord
-                                                      .descricao,
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                )),
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.13,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Text(
-                                                  listViewEquipamentosRecord
-                                                      .tagNumber,
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 1,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.12,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Text(
-                                                  listViewEquipamentosRecord
-                                                      .serie,
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.15,
-                                                height: 40.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .stretch,
-                                                  children: [
-                                                    AlignedTooltip(
-                                                      content: Padding(
-                                                        padding:
-                                                            EdgeInsets.all(4.0),
-                                                        child: Text(
-                                                          'Role para ver mais',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      offset: 4.0,
-                                                      preferredDirection:
-                                                          AxisDirection.down,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryBackground,
-                                                      elevation: 4.0,
-                                                      tailBaseWidth: 24.0,
-                                                      tailLength: 12.0,
-                                                      waitDuration: Duration(
-                                                          milliseconds: 100),
-                                                      showDuration: Duration(
-                                                          milliseconds: 1500),
-                                                      triggerMode:
-                                                          TooltipTriggerMode
-                                                              .tap,
-                                                      child: Icon(
-                                                        Icons
-                                                            .arrow_downward_rounded,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 24.0,
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 130.0,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          SingleChildScrollView(
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            SelectionArea(
-                                                                child: Text(
-                                                              '${listViewEquipamentosRecord.planta}>',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            )),
-                                                            SelectionArea(
-                                                                child: Text(
-                                                              '${listViewEquipamentosRecord.area}>',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            )),
-                                                            SelectionArea(
-                                                                child: Text(
-                                                              '${listViewEquipamentosRecord.unidade}',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            )),
-                                                          ].divide(SizedBox(
-                                                              height: 5.0)),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(width: 3.0)),
-                                                ),
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.11,
-                                                decoration: BoxDecoration(),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
+                                                          0.14,
+                                                  decoration: BoxDecoration(),
+                                                  child: Row(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFF105DFB),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            child:
-                                                                AlignedTooltip(
-                                                              content: Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            4.0),
-                                                                child: Text(
-                                                                  'Todas as inspeções',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              offset: 4.0,
-                                                              preferredDirection:
-                                                                  AxisDirection
-                                                                      .down,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              elevation: 4.0,
-                                                              tailBaseWidth:
-                                                                  24.0,
-                                                              tailLength: 12.0,
-                                                              waitDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          100),
-                                                              showDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          1500),
-                                                              triggerMode:
-                                                                  TooltipTriggerMode
-                                                                      .tap,
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            5.0,
-                                                                            5.0,
-                                                                            5.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    _model.todasInsp =
-                                                                        await queryInspecoesRecordOnce(
-                                                                      parent: listViewEquipamentosRecord
-                                                                          .reference,
-                                                                      queryBuilder:
-                                                                          (inspecoesRecord) =>
-                                                                              inspecoesRecord.where(
-                                                                        'Vencimento',
-                                                                        isLessThanOrEqualTo:
-                                                                            _model.datePickerValue,
-                                                                      ),
-                                                                    );
-                                                                    await actions
-                                                                        .geradorPdf(
-                                                                      _model
-                                                                          .todasInsp
-                                                                          ?.toList(),
-                                                                      listViewEquipamentosRecord
-                                                                          .nome,
-                                                                      listViewEquipamentosRecord
-                                                                          .tipo,
-                                                                      listViewEquipamentosRecord
-                                                                          .tagNumber,
-                                                                      listViewEquipamentosRecord
-                                                                          .codigo,
-                                                                      listViewEquipamentosRecord
-                                                                          .status,
-                                                                      currentUserDisplayName,
-                                                                    );
-
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .search,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    size: 25.0,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            child:
-                                                                AlignedTooltip(
-                                                              content: Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            4.0),
-                                                                child: Text(
-                                                                  'Inspeções periódicas',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              offset: 4.0,
-                                                              preferredDirection:
-                                                                  AxisDirection
-                                                                      .down,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              elevation: 4.0,
-                                                              tailBaseWidth:
-                                                                  24.0,
-                                                              tailLength: 12.0,
-                                                              waitDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          100),
-                                                              showDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          1500),
-                                                              triggerMode:
-                                                                  TooltipTriggerMode
-                                                                      .tap,
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            5.0,
-                                                                            5.0,
-                                                                            5.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    _model.filtradaInsp =
-                                                                        await queryInspecoesRecordOnce(
-                                                                      parent: listViewEquipamentosRecord
-                                                                          .reference,
-                                                                      queryBuilder:
-                                                                          (inspecoesRecord) =>
-                                                                              inspecoesRecord.where(Filter.or(
-                                                                        Filter(
-                                                                          'Tipo_Inspecao',
-                                                                          isEqualTo:
-                                                                              'Periódica',
-                                                                        ),
-                                                                        Filter(
-                                                                          'Vencimento',
-                                                                          isLessThanOrEqualTo:
-                                                                              _model.datePickerValue,
-                                                                        ),
-                                                                      )),
-                                                                    );
-                                                                    await actions
-                                                                        .geradorPdf(
-                                                                      _model
-                                                                          .filtradaInsp
-                                                                          ?.toList(),
-                                                                      listViewEquipamentosRecord
-                                                                          .nome,
-                                                                      listViewEquipamentosRecord
-                                                                          .tipo,
-                                                                      listViewEquipamentosRecord
-                                                                          .tagNumber,
-                                                                      listViewEquipamentosRecord
-                                                                          .codigo,
-                                                                      listViewEquipamentosRecord
-                                                                          .status,
-                                                                      currentUserDisplayName,
-                                                                    );
-
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .search,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    size: 25.0,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ].divide(SizedBox(
-                                                            width: 20.0)),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      if (valueOrDefault<bool>(
-                                        MediaQuery.sizeOf(context).width <=
-                                            1024.0,
-                                        true,
-                                      ))
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 12.0, 0.0, 10.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.3,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .stretch,
-                                                        children: [
-                                                          Text(
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.11,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0),
+                                                          child: SelectionArea(
+                                                              child: Text(
                                                             valueOrDefault<
                                                                 String>(
                                                               listViewEquipamentosRecord
                                                                   .tipo,
                                                               'Serqual - Consultoria em Engenharia LTDA',
-                                                            ).maybeHandleOverflow(
-                                                              maxChars: 18,
-                                                              replacement: '…',
                                                             ),
                                                             textAlign: TextAlign
                                                                 .center,
+                                                            maxLines: 2,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -2674,71 +2063,756 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
-                                                          ),
-                                                          SelectionArea(
-                                                              child: Text(
-                                                            listViewEquipamentosRecord
-                                                                .descricao,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            maxLines: 1,
+                                                          )),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.1,
+                                                  decoration: BoxDecoration(),
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    listViewEquipamentosRecord
+                                                        .descricao,
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  )),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.13,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Text(
+                                                    listViewEquipamentosRecord
+                                                        .tagNumber,
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.12,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Text(
+                                                    listViewEquipamentosRecord
+                                                        .serie,
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.15,
+                                                  height: 40.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .stretch,
+                                                    children: [
+                                                      AlignedTooltip(
+                                                        content: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  4.0),
+                                                          child: Text(
+                                                            'Role para ver mais',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
+                                                                .bodyLarge
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  fontSize:
-                                                                      16.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
                                                                 ),
-                                                          )),
-                                                        ].divide(SizedBox(
-                                                            height: 4.0)),
+                                                          ),
+                                                        ),
+                                                        offset: 4.0,
+                                                        preferredDirection:
+                                                            AxisDirection.down,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryBackground,
+                                                        elevation: 4.0,
+                                                        tailBaseWidth: 24.0,
+                                                        tailLength: 12.0,
+                                                        waitDuration: Duration(
+                                                            milliseconds: 100),
+                                                        showDuration: Duration(
+                                                            milliseconds: 1500),
+                                                        triggerMode:
+                                                            TooltipTriggerMode
+                                                                .tap,
+                                                        child: Icon(
+                                                          Icons
+                                                              .arrow_downward_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          size: 24.0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.35,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Row(
+                                                      Container(
+                                                        width: 130.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            SingleChildScrollView(
+                                                          child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            3.0),
+                                                              SelectionArea(
+                                                                  child: Text(
+                                                                '${listViewEquipamentosRecord.planta}>',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
+                                                              )),
+                                                              SelectionArea(
+                                                                  child: Text(
+                                                                '${listViewEquipamentosRecord.area}>',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
+                                                              )),
+                                                              SelectionArea(
+                                                                  child: Text(
+                                                                '${listViewEquipamentosRecord.unidade}',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
+                                                              )),
+                                                            ].divide(SizedBox(
+                                                                height: 5.0)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(width: 3.0)),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.11,
+                                                  decoration: BoxDecoration(),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xFF105DFB),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              child:
+                                                                  AlignedTooltip(
+                                                                content:
+                                                                    Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              4.0),
+                                                                  child: Text(
+                                                                    'Todas as inspeções',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                offset: 4.0,
+                                                                preferredDirection:
+                                                                    AxisDirection
+                                                                        .down,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                elevation: 4.0,
+                                                                tailBaseWidth:
+                                                                    24.0,
+                                                                tailLength:
+                                                                    12.0,
+                                                                waitDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                showDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            1500),
+                                                                triggerMode:
+                                                                    TooltipTriggerMode
+                                                                        .tap,
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0),
+                                                                  child:
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      _model.todasInsp =
+                                                                          await queryInspecoesRecordOnce(
+                                                                        parent:
+                                                                            listViewEquipamentosRecord.reference,
+                                                                        queryBuilder:
+                                                                            (inspecoesRecord) =>
+                                                                                inspecoesRecord.where(
+                                                                          'Vencimento',
+                                                                          isLessThanOrEqualTo:
+                                                                              _model.datePickerValue,
+                                                                        ),
+                                                                      );
+                                                                      await actions
+                                                                          .geradorPdf(
+                                                                        _model
+                                                                            .todasInsp
+                                                                            ?.toList(),
+                                                                        listViewEquipamentosRecord
+                                                                            .nome,
+                                                                        listViewEquipamentosRecord
+                                                                            .tipo,
+                                                                        listViewEquipamentosRecord
+                                                                            .tagNumber,
+                                                                        listViewEquipamentosRecord
+                                                                            .codigo,
+                                                                        listViewEquipamentosRecord
+                                                                            .status,
+                                                                        currentUserDisplayName,
+                                                                      );
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .search,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      size:
+                                                                          25.0,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              child:
+                                                                  AlignedTooltip(
+                                                                content:
+                                                                    Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              4.0),
+                                                                  child: Text(
+                                                                    'Inspeções periódicas',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                offset: 4.0,
+                                                                preferredDirection:
+                                                                    AxisDirection
+                                                                        .down,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                elevation: 4.0,
+                                                                tailBaseWidth:
+                                                                    24.0,
+                                                                tailLength:
+                                                                    12.0,
+                                                                waitDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                showDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            1500),
+                                                                triggerMode:
+                                                                    TooltipTriggerMode
+                                                                        .tap,
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0,
+                                                                          5.0),
+                                                                  child:
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      _model.filtradaInsp =
+                                                                          await queryInspecoesRecordOnce(
+                                                                        parent:
+                                                                            listViewEquipamentosRecord.reference,
+                                                                        queryBuilder:
+                                                                            (inspecoesRecord) =>
+                                                                                inspecoesRecord.where(Filter.or(
+                                                                          Filter(
+                                                                            'Tipo_Inspecao',
+                                                                            isEqualTo:
+                                                                                'Periódica',
+                                                                          ),
+                                                                          Filter(
+                                                                            'Vencimento',
+                                                                            isLessThanOrEqualTo:
+                                                                                _model.datePickerValue,
+                                                                          ),
+                                                                        )),
+                                                                      );
+                                                                      await actions
+                                                                          .geradorPdf(
+                                                                        _model
+                                                                            .filtradaInsp
+                                                                            ?.toList(),
+                                                                        listViewEquipamentosRecord
+                                                                            .nome,
+                                                                        listViewEquipamentosRecord
+                                                                            .tipo,
+                                                                        listViewEquipamentosRecord
+                                                                            .tagNumber,
+                                                                        listViewEquipamentosRecord
+                                                                            .codigo,
+                                                                        listViewEquipamentosRecord
+                                                                            .status,
+                                                                        currentUserDisplayName,
+                                                                      );
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .search,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      size:
+                                                                          25.0,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ].divide(SizedBox(
+                                                              width: 20.0)),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        if (valueOrDefault<bool>(
+                                          MediaQuery.sizeOf(context).width <=
+                                              1024.0,
+                                          true,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 12.0, 0.0, 10.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.3,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .stretch,
+                                                          children: [
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewEquipamentosRecord
+                                                                    .tipo,
+                                                                'Serqual - Consultoria em Engenharia LTDA',
+                                                              ).maybeHandleOverflow(
+                                                                maxChars: 18,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                            ),
+                                                            SelectionArea(
                                                                 child: Text(
-                                                                  'Tag:',
+                                                              listViewEquipamentosRecord
+                                                                  .descricao,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              maxLines: 1,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            )),
+                                                          ].divide(SizedBox(
+                                                              height: 4.0)),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.35,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          3.0),
+                                                                  child: Text(
+                                                                    'Tag:',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          3.0),
+                                                                  child:
+                                                                      SelectionArea(
+                                                                          child:
+                                                                              Text(
+                                                                    'mzz / VP 01',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    maxLines: 1,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
+                                                                  )),
+                                                                ),
+                                                              ].divide(SizedBox(
+                                                                  width: 3.0)),
+                                                            ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Text(
+                                                                  'Série:',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
@@ -2758,20 +2832,10 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                                                             FontWeight.w600,
                                                                       ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            3.0),
-                                                                child:
-                                                                    SelectionArea(
-                                                                        child:
-                                                                            Text(
-                                                                  'mzz / VP 01',
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                                  listViewEquipamentosRecord
+                                                                      .serie,
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
@@ -2792,577 +2856,478 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                                                             FontWeight.normal,
                                                                       ),
                                                                 )),
-                                                              ),
-                                                            ].divide(SizedBox(
-                                                                width: 3.0)),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Text(
-                                                                'Série:',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                              ),
-                                                              SelectionArea(
-                                                                  child: Text(
-                                                                listViewEquipamentosRecord
-                                                                    .serie,
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                maxLines: 1,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
-                                                              )),
-                                                            ].divide(SizedBox(
-                                                                width: 3.0)),
-                                                          ),
-                                                        ].divide(SizedBox(
-                                                            height: 4.0)),
+                                                              ].divide(SizedBox(
+                                                                  width: 3.0)),
+                                                            ),
+                                                          ].divide(SizedBox(
+                                                              height: 4.0)),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(width: 20.0)),
+                                                    ].divide(
+                                                        SizedBox(width: 20.0)),
+                                                  ),
                                                 ),
-                                              ),
-                                              Container(
-                                                decoration: BoxDecoration(),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  color: Color(0x00000000),
-                                                  child: ExpandableNotifier(
-                                                    initialExpanded: false,
-                                                    child: ExpandablePanel(
-                                                      header: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child:
-                                                                AlignedTooltip(
-                                                              content: Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            4.0),
-                                                                child: Text(
-                                                                  'Mais informações',
-                                                                  style: FlutterFlowTheme.of(
+                                                Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    color: Color(0x00000000),
+                                                    child: ExpandableNotifier(
+                                                      initialExpanded: false,
+                                                      child: ExpandablePanel(
+                                                        header: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child:
+                                                                  AlignedTooltip(
+                                                                content:
+                                                                    Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              4.0),
+                                                                  child: Text(
+                                                                    'Mais informações',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                offset: 4.0,
+                                                                preferredDirection:
+                                                                    AxisDirection
+                                                                        .down,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                elevation: 4.0,
+                                                                tailBaseWidth:
+                                                                    24.0,
+                                                                tailLength:
+                                                                    12.0,
+                                                                waitDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                showDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            1500),
+                                                                triggerMode:
+                                                                    TooltipTriggerMode
+                                                                        .tap,
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .keyboard_arrow_down_rounded,
+                                                                  color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
+                                                                      .primaryBackground,
+                                                                  size: 26.0,
                                                                 ),
                                                               ),
-                                                              offset: 4.0,
-                                                              preferredDirection:
-                                                                  AxisDirection
-                                                                      .down,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              elevation: 4.0,
-                                                              tailBaseWidth:
-                                                                  24.0,
-                                                              tailLength: 12.0,
-                                                              waitDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          100),
-                                                              showDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          1500),
-                                                              triggerMode:
-                                                                  TooltipTriggerMode
-                                                                      .tap,
-                                                              child: Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
+                                                            ),
+                                                            SizedBox(
+                                                              width: 280.0,
+                                                              child: Divider(
+                                                                thickness: 1.0,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryBackground,
-                                                                size: 26.0,
                                                               ),
                                                             ),
-                                                          ),
-                                                          SizedBox(
-                                                            width: 280.0,
-                                                            child: Divider(
-                                                              thickness: 1.0,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBackground,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      collapsed: Container(),
-                                                      expanded: Container(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                1.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          ],
                                                         ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceAround,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.4,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
+                                                        collapsed: Container(),
+                                                        expanded: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
                                                                           context)
-                                                                      .secondaryBackground,
-                                                                ),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Ações',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Inter',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          ),
-                                                                    ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children:
-                                                                          [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Color(0xFF105DFB),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                          ),
-                                                                          child:
-                                                                              AlignedTooltip(
-                                                                            content:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(4.0),
-                                                                              child: Text(
-                                                                                'Todas as inspeções',
-                                                                                style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                      fontFamily: 'Inter',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                            offset:
-                                                                                4.0,
-                                                                            preferredDirection:
-                                                                                AxisDirection.down,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            elevation:
-                                                                                4.0,
-                                                                            tailBaseWidth:
-                                                                                24.0,
-                                                                            tailLength:
-                                                                                12.0,
-                                                                            waitDuration:
-                                                                                Duration(milliseconds: 100),
-                                                                            showDuration:
-                                                                                Duration(milliseconds: 1500),
-                                                                            triggerMode:
-                                                                                TooltipTriggerMode.tap,
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                                                                              child: InkWell(
-                                                                                splashColor: Colors.transparent,
-                                                                                focusColor: Colors.transparent,
-                                                                                hoverColor: Colors.transparent,
-                                                                                highlightColor: Colors.transparent,
-                                                                                onTap: () async {
-                                                                                  _model.todasInspMob = await queryInspecoesRecordOnce(
-                                                                                    parent: listViewEquipamentosRecord.reference,
-                                                                                    queryBuilder: (inspecoesRecord) => inspecoesRecord.where(
-                                                                                      'Vencimento',
-                                                                                      isLessThanOrEqualTo: _model.datePickerValue,
-                                                                                    ),
-                                                                                  );
-                                                                                  await actions.geradorPdf(
-                                                                                    _model.todasInspMob?.toList(),
-                                                                                    listViewEquipamentosRecord.nome,
-                                                                                    listViewEquipamentosRecord.tipo,
-                                                                                    listViewEquipamentosRecord.tagNumber,
-                                                                                    listViewEquipamentosRecord.codigo,
-                                                                                    listViewEquipamentosRecord.status,
-                                                                                    currentUserDisplayName,
-                                                                                  );
-
-                                                                                  setState(() {});
-                                                                                },
-                                                                                child: Icon(
-                                                                                  Icons.search,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  size: 25.0,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primary,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                          ),
-                                                                          child:
-                                                                              AlignedTooltip(
-                                                                            content:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(4.0),
-                                                                              child: Text(
-                                                                                'Inspeções periódicas',
-                                                                                style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                      fontFamily: 'Inter',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                            offset:
-                                                                                4.0,
-                                                                            preferredDirection:
-                                                                                AxisDirection.down,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            elevation:
-                                                                                4.0,
-                                                                            tailBaseWidth:
-                                                                                24.0,
-                                                                            tailLength:
-                                                                                12.0,
-                                                                            waitDuration:
-                                                                                Duration(milliseconds: 100),
-                                                                            showDuration:
-                                                                                Duration(milliseconds: 1500),
-                                                                            triggerMode:
-                                                                                TooltipTriggerMode.tap,
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                                                                              child: InkWell(
-                                                                                splashColor: Colors.transparent,
-                                                                                focusColor: Colors.transparent,
-                                                                                hoverColor: Colors.transparent,
-                                                                                highlightColor: Colors.transparent,
-                                                                                onTap: () async {
-                                                                                  _model.filtradaInspMob = await queryInspecoesRecordOnce(
-                                                                                    parent: listViewEquipamentosRecord.reference,
-                                                                                    queryBuilder: (inspecoesRecord) => inspecoesRecord.where(Filter.or(
-                                                                                      Filter(
-                                                                                        'Tipo_Inspecao',
-                                                                                        isEqualTo: 'Periódica',
-                                                                                      ),
-                                                                                      Filter(
-                                                                                        'Vencimento',
-                                                                                        isLessThanOrEqualTo: _model.datePickerValue,
-                                                                                      ),
-                                                                                    )),
-                                                                                  );
-                                                                                  await actions.geradorPdf(
-                                                                                    _model.filtradaInspMob?.toList(),
-                                                                                    listViewEquipamentosRecord.nome,
-                                                                                    listViewEquipamentosRecord.tipo,
-                                                                                    listViewEquipamentosRecord.tagNumber,
-                                                                                    listViewEquipamentosRecord.codigo,
-                                                                                    listViewEquipamentosRecord.status,
-                                                                                    currentUserDisplayName,
-                                                                                  );
-
-                                                                                  setState(() {});
-                                                                                },
-                                                                                child: Icon(
-                                                                                  Icons.search,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  size: 25.0,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ].divide(SizedBox(
-                                                                              width: 20.0)),
-                                                                    ),
-                                                                  ].divide(SizedBox(
-                                                                      height:
-                                                                          15.0)),
-                                                                ),
-                                                              ),
-                                                              Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.4,
-                                                                height: 70.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                ),
-                                                                child:
-                                                                    Container(
+                                                                      .width *
+                                                                  1.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceAround,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
                                                                   width: MediaQuery.sizeOf(
                                                                               context)
                                                                           .width *
-                                                                      0.15,
-                                                                  height: 40.0,
+                                                                      0.4,
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
                                                                   ),
-                                                                  child: Row(
+                                                                  child: Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .stretch,
                                                                     children: [
-                                                                      AlignedTooltip(
-                                                                        content:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(4.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Role para ver mais',
-                                                                            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                  fontFamily: 'Inter',
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                        offset:
-                                                                            4.0,
-                                                                        preferredDirection:
-                                                                            AxisDirection.down,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).secondaryBackground,
-                                                                        elevation:
-                                                                            4.0,
-                                                                        tailBaseWidth:
-                                                                            24.0,
-                                                                        tailLength:
-                                                                            12.0,
-                                                                        waitDuration:
-                                                                            Duration(milliseconds: 100),
-                                                                        showDuration:
-                                                                            Duration(milliseconds: 1500),
-                                                                        triggerMode:
-                                                                            TooltipTriggerMode.tap,
-                                                                        child:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .arrow_downward_rounded,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          size:
-                                                                              24.0,
-                                                                        ),
+                                                                      Text(
+                                                                        'Ações',
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              fontFamily: 'Inter',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontSize: 14.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
                                                                       ),
-                                                                      Container(
-                                                                        width:
-                                                                            130.0,
-                                                                        decoration:
-                                                                            BoxDecoration(),
-                                                                        child:
-                                                                            SingleChildScrollView(
-                                                                          child:
-                                                                              Column(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children:
-                                                                                [
-                                                                              SelectionArea(
-                                                                                  child: Text(
-                                                                                '${listViewEquipamentosRecord.planta}>',
-                                                                                textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Inter',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 16.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                    ),
-                                                                              )),
-                                                                              SelectionArea(
-                                                                                  child: Text(
-                                                                                '${listViewEquipamentosRecord.area}>',
-                                                                                textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Inter',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 16.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                    ),
-                                                                              )),
-                                                                              SelectionArea(
-                                                                                  child: Text(
-                                                                                '${listViewEquipamentosRecord.unidade}',
-                                                                                textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Inter',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 16.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                    ),
-                                                                              )),
-                                                                            ].divide(SizedBox(height: 5.0)),
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
+                                                                        children:
+                                                                            [
+                                                                          Container(
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: Color(0xFF105DFB),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                AlignedTooltip(
+                                                                              content: Padding(
+                                                                                padding: EdgeInsets.all(4.0),
+                                                                                child: Text(
+                                                                                  'Todas as inspeções',
+                                                                                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              offset: 4.0,
+                                                                              preferredDirection: AxisDirection.down,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              elevation: 4.0,
+                                                                              tailBaseWidth: 24.0,
+                                                                              tailLength: 12.0,
+                                                                              waitDuration: Duration(milliseconds: 100),
+                                                                              showDuration: Duration(milliseconds: 1500),
+                                                                              triggerMode: TooltipTriggerMode.tap,
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                                                                child: InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    _model.todasInspMob = await queryInspecoesRecordOnce(
+                                                                                      parent: listViewEquipamentosRecord.reference,
+                                                                                      queryBuilder: (inspecoesRecord) => inspecoesRecord.where(
+                                                                                        'Vencimento',
+                                                                                        isLessThanOrEqualTo: _model.datePickerValue,
+                                                                                      ),
+                                                                                    );
+                                                                                    await actions.geradorPdf(
+                                                                                      _model.todasInspMob?.toList(),
+                                                                                      listViewEquipamentosRecord.nome,
+                                                                                      listViewEquipamentosRecord.tipo,
+                                                                                      listViewEquipamentosRecord.tagNumber,
+                                                                                      listViewEquipamentosRecord.codigo,
+                                                                                      listViewEquipamentosRecord.status,
+                                                                                      currentUserDisplayName,
+                                                                                    );
+                                                                                    setState(() {});
+                                                                                  },
+                                                                                  child: Icon(
+                                                                                    Icons.search,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                    size: 25.0,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
                                                                           ),
-                                                                        ),
+                                                                          Container(
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                AlignedTooltip(
+                                                                              content: Padding(
+                                                                                padding: EdgeInsets.all(4.0),
+                                                                                child: Text(
+                                                                                  'Inspeções periódicas',
+                                                                                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                              offset: 4.0,
+                                                                              preferredDirection: AxisDirection.down,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              elevation: 4.0,
+                                                                              tailBaseWidth: 24.0,
+                                                                              tailLength: 12.0,
+                                                                              waitDuration: Duration(milliseconds: 100),
+                                                                              showDuration: Duration(milliseconds: 1500),
+                                                                              triggerMode: TooltipTriggerMode.tap,
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                                                                                child: InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    _model.filtradaInspMob = await queryInspecoesRecordOnce(
+                                                                                      parent: listViewEquipamentosRecord.reference,
+                                                                                      queryBuilder: (inspecoesRecord) => inspecoesRecord.where(Filter.or(
+                                                                                        Filter(
+                                                                                          'Tipo_Inspecao',
+                                                                                          isEqualTo: 'Periódica',
+                                                                                        ),
+                                                                                        Filter(
+                                                                                          'Vencimento',
+                                                                                          isLessThanOrEqualTo: _model.datePickerValue,
+                                                                                        ),
+                                                                                      )),
+                                                                                    );
+                                                                                    await actions.geradorPdf(
+                                                                                      _model.filtradaInspMob?.toList(),
+                                                                                      listViewEquipamentosRecord.nome,
+                                                                                      listViewEquipamentosRecord.tipo,
+                                                                                      listViewEquipamentosRecord.tagNumber,
+                                                                                      listViewEquipamentosRecord.codigo,
+                                                                                      listViewEquipamentosRecord.status,
+                                                                                      currentUserDisplayName,
+                                                                                    );
+                                                                                    setState(() {});
+                                                                                  },
+                                                                                  child: Icon(
+                                                                                    Icons.search,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                    size: 25.0,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ].divide(SizedBox(width: 20.0)),
                                                                       ),
                                                                     ].divide(SizedBox(
-                                                                        width:
-                                                                            3.0)),
+                                                                        height:
+                                                                            15.0)),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                                Container(
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      0.4,
+                                                                  height: 70.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.15,
+                                                                    height:
+                                                                        40.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .stretch,
+                                                                      children:
+                                                                          [
+                                                                        AlignedTooltip(
+                                                                          content:
+                                                                              Padding(
+                                                                            padding:
+                                                                                EdgeInsets.all(4.0),
+                                                                            child:
+                                                                                Text(
+                                                                              'Role para ver mais',
+                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                    fontFamily: 'Inter',
+                                                                                    letterSpacing: 0.0,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                          offset:
+                                                                              4.0,
+                                                                          preferredDirection:
+                                                                              AxisDirection.down,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          elevation:
+                                                                              4.0,
+                                                                          tailBaseWidth:
+                                                                              24.0,
+                                                                          tailLength:
+                                                                              12.0,
+                                                                          waitDuration:
+                                                                              Duration(milliseconds: 100),
+                                                                          showDuration:
+                                                                              Duration(milliseconds: 1500),
+                                                                          triggerMode:
+                                                                              TooltipTriggerMode.tap,
+                                                                          child:
+                                                                              Icon(
+                                                                            Icons.arrow_downward_rounded,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            size:
+                                                                                24.0,
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+                                                                          width:
+                                                                              130.0,
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              SingleChildScrollView(
+                                                                            child:
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                SelectionArea(
+                                                                                    child: Text(
+                                                                                  '${listViewEquipamentosRecord.planta}>',
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: 16.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                )),
+                                                                                SelectionArea(
+                                                                                    child: Text(
+                                                                                  '${listViewEquipamentosRecord.area}>',
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: 16.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                )),
+                                                                                SelectionArea(
+                                                                                    child: Text(
+                                                                                  '${listViewEquipamentosRecord.unidade}',
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Inter',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: 16.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                )),
+                                                                              ].divide(SizedBox(height: 5.0)),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ].divide(SizedBox(
+                                                                              width: 3.0)),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      theme:
-                                                          ExpandableThemeData(
-                                                        tapHeaderToExpand: true,
-                                                        tapBodyToExpand: true,
-                                                        tapBodyToCollapse: true,
-                                                        headerAlignment:
-                                                            ExpandablePanelHeaderAlignment
-                                                                .center,
-                                                        hasIcon: false,
+                                                        theme:
+                                                            ExpandableThemeData(
+                                                          tapHeaderToExpand:
+                                                              true,
+                                                          tapBodyToExpand: true,
+                                                          tapBodyToCollapse:
+                                                              true,
+                                                          headerAlignment:
+                                                              ExpandablePanelHeaderAlignment
+                                                                  .center,
+                                                          hasIcon: false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],
