@@ -962,6 +962,84 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
+                                          'Status do Equipamento',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.dropDownValueController1 ??=
+                                            FormFieldController<String>(
+                                      _model.dropDownValue1 ??= 'Em operação',
+                                    ),
+                                    options: [
+                                      'Em operação',
+                                      'Inativo',
+                                      'Em início de operação'
+                                    ],
+                                    onChanged: (val) => setState(
+                                        () => _model.dropDownValue1 = val),
+                                    width: 300.0,
+                                    height: 56.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintText: 'Selecione uma opção...',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ].divide(SizedBox(height: 10.0)),
+                              ),
+                            ),
+                            Container(
+                              constraints: BoxConstraints(
+                                maxWidth: 300.0,
+                              ),
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        3.0, 0.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
                                           'Planta',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
@@ -1009,13 +1087,13 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                           snapshot.data!;
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
-                                                .dropDownValueController1 ??=
+                                                .dropDownValueController2 ??=
                                             FormFieldController<String>(null),
                                         options: dropDownPlantasRecordList
                                             .map((e) => e.nome)
                                             .toList(),
                                         onChanged: (val) => setState(
-                                            () => _model.dropDownValue1 = val),
+                                            () => _model.dropDownValue2 = val),
                                         width: 300.0,
                                         height: 56.0,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -1093,7 +1171,7 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                           )
                                           .where(
                                             'Planta',
-                                            isEqualTo: _model.dropDownValue1,
+                                            isEqualTo: _model.dropDownValue2,
                                           ),
                                     ),
                                     builder: (context, snapshot) {
@@ -1118,13 +1196,13 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                           snapshot.data!;
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
-                                                .dropDownValueController2 ??=
+                                                .dropDownValueController3 ??=
                                             FormFieldController<String>(null),
                                         options: dropDownAreasRecordList
                                             .map((e) => e.nome)
                                             .toList(),
                                         onChanged: (val) => setState(
-                                            () => _model.dropDownValue2 = val),
+                                            () => _model.dropDownValue3 = val),
                                         width: 300.0,
                                         height: 56.0,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -1205,12 +1283,12 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                               .where(
                                                 'Area',
                                                 isEqualTo:
-                                                    _model.dropDownValue2,
+                                                    _model.dropDownValue3,
                                               )
                                               .where(
                                                 'Planta',
                                                 isEqualTo:
-                                                    _model.dropDownValue1,
+                                                    _model.dropDownValue2,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
@@ -1235,13 +1313,13 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                           snapshot.data!;
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
-                                                .dropDownValueController3 ??=
+                                                .dropDownValueController4 ??=
                                             FormFieldController<String>(null),
                                         options: dropDownUnidadesRecordList
                                             .map((e) => e.nome)
                                             .toList(),
                                         onChanged: (val) => setState(
-                                            () => _model.dropDownValue3 = val),
+                                            () => _model.dropDownValue4 = val),
                                         width: 300.0,
                                         height: 56.0,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -1312,90 +1390,13 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                   ),
                                   FlutterFlowDropDown<String>(
                                     controller:
-                                        _model.dropDownValueController4 ??=
+                                        _model.dropDownValueController5 ??=
                                             FormFieldController<String>(null),
                                     options: [
                                       'Vaso de Pressão',
                                       'Caldeira',
                                       'Tubulação Interligando Vaso de Pressão',
                                       'Tubulação Interligando Caldeira'
-                                    ],
-                                    onChanged: (val) => setState(
-                                        () => _model.dropDownValue4 = val),
-                                    width: 300.0,
-                                    height: 56.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText: 'Selecione uma opção...',
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    elevation: 2.0,
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    borderWidth: 2.0,
-                                    borderRadius: 8.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 4.0, 16.0, 4.0),
-                                    hidesUnderline: true,
-                                    isOverButton: true,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
-                                  ),
-                                ].divide(SizedBox(height: 10.0)),
-                              ),
-                            ),
-                            Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 300.0,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        3.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Status do Equipamento',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController5 ??=
-                                            FormFieldController<String>(null),
-                                    options: [
-                                      'Em operação',
-                                      'Inativo',
-                                      'Em início de operação',
-                                      'A ser fabricado'
                                     ],
                                     onChanged: (val) => setState(
                                         () => _model.dropDownValue5 = val),
@@ -1543,7 +1544,6 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                                     );
                                                   },
                                                 );
-
                                                 if (_datePickedDate != null) {
                                                   safeSetState(() {
                                                     _model.datePicked =
@@ -1567,8 +1567,8 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                             ),
                                           ),
                                           Text(
-                                            dateTimeFormat(
-                                                'd/M/y', _model.datePicked),
+                                            dateTimeFormat('d/M/y',
+                                                _model.datePickerValue),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
@@ -1589,8 +1589,6 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                   FFButtonWidget(
                                     onPressed: () async {
                                       setState(() {
-                                        _model.dropDownValueController1
-                                            ?.reset();
                                         _model.dropDownValueController2
                                             ?.reset();
                                         _model.dropDownValueController3
@@ -1599,6 +1597,11 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                             ?.reset();
                                         _model.dropDownValueController5
                                             ?.reset();
+                                        _model.dropDownValueController1
+                                            ?.reset();
+                                      });
+                                      setState(() {
+                                        _model.datePickerValue = null;
                                       });
                                     },
                                     text: 'Limpar',
@@ -1911,28 +1914,24 @@ class _RelatoriosWidgetState extends State<RelatoriosWidget>
                                     isEqualTo: FFAppState().contrato,
                                   )
                                   .where(
-                                    'aptoRelatorio',
-                                    isEqualTo: true,
-                                  )
-                                  .where(
                                     'Planta',
-                                    isEqualTo: _model.dropDownValue1,
-                                  )
-                                  .where(
-                                    'Area',
                                     isEqualTo: _model.dropDownValue2,
                                   )
                                   .where(
-                                    'Unidade',
+                                    'Area',
                                     isEqualTo: _model.dropDownValue3,
                                   )
                                   .where(
-                                    'Tipo',
+                                    'Unidade',
                                     isEqualTo: _model.dropDownValue4,
                                   )
                                   .where(
-                                    'Status',
+                                    'Tipo',
                                     isEqualTo: _model.dropDownValue5,
+                                  )
+                                  .where(
+                                    'Status',
+                                    isEqualTo: _model.dropDownValue1,
                                   )
                                   .orderBy('created_time', descending: true),
                         ),
