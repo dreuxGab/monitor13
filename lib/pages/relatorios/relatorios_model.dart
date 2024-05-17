@@ -39,6 +39,13 @@ class RelatoriosModel extends FlutterFlowModel<RelatoriosWidget> {
 
   // State field(s) for Switch widget.
   bool? switchValue;
+
+  // State field(s) for TextField_filtro_nome_relatorios widget.
+  FocusNode? textFieldFiltroNomeRelatoriosFocusNode;
+  TextEditingController? textFieldFiltroNomeRelatoriosTextController;
+  String? Function(BuildContext, String?)?
+      textFieldFiltroNomeRelatoriosTextControllerValidator;
+
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -109,7 +116,7 @@ class RelatoriosModel extends FlutterFlowModel<RelatoriosWidget> {
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions,
           controller: controller,
-          pageSize: 3,
+          pageSize: 20,
           isStream: true,
         ),
       );
