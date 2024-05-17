@@ -13,12 +13,21 @@ Future<DateTime?> somaPeriodicidadeAnos(String? periodicidade) async {
     // Obtém a data atual
     DateTime dataAtual = DateTime.now();
 
-    // Verifica se a periodicidade é um número
-    int? anos = int.tryParse(periodicidade);
+    // Verifica se a periodicidade pode ser interpretada como um número
+    double? anos = double.tryParse(periodicidade);
+
     if (anos != null) {
-      // Adiciona os anos à data atual
-      DateTime novaData =
-          DateTime(dataAtual.year + anos, dataAtual.month, dataAtual.day);
+      // Divide a parte inteira e a parte fracionária dos anos
+      int anosInteiros = anos.toInt();
+      double anosFracionados = anos - anosInteiros;
+
+      // Adiciona a parte inteira dos anos à data atual
+      DateTime novaData = DateTime(
+          dataAtual.year + anosInteiros, dataAtual.month, dataAtual.day);
+
+      // Adiciona a parte fracionária dos anos, convertendo para dias
+      int diasAdicionais = (365 * anosFracionados).toInt();
+      novaData = novaData.add(Duration(days: diasAdicionais));
       return novaData;
     } else {
       // Retorna null se a periodicidade não puder ser convertida para um número
