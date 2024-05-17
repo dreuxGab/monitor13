@@ -1150,120 +1150,121 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                       ),
                                     ),
                                   if (!(_model.editar ? false : true))
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          _model.editar = false;
-                                        });
-                                        setState(() {
-                                          _model
-                                              .prontuarioEquipaInputTextController
-                                              ?.clear();
-                                          _model
-                                              .prontuarioTipoEquipaInputTextController
-                                              ?.clear();
-                                          _model
-                                              .prontuIdentificacaoInputTextController
-                                              ?.clear();
-                                          _model.prontuAnoDocInputTextController
-                                              ?.clear();
-                                          _model.serieInputTextController
-                                              ?.clear();
-                                          _model.descricaoInputTextController
-                                              ?.clear();
-                                          _model.tagInputTextController
-                                              ?.clear();
-                                          _model
-                                              .nameInputCreateEquipTextController
-                                              ?.clear();
-                                          _model.documentacaoInputTextController
-                                              ?.clear();
-                                          _model.fabricanteInputTextController
-                                              ?.clear();
-                                          _model.fornecedorInputTextController
-                                              ?.clear();
-                                          _model.nameInputEditTextController
-                                              ?.clear();
-                                          _model.serieInputEditTextController
-                                              ?.clear();
-                                          _model
-                                              .descricaoInputEditTextController
-                                              ?.clear();
-                                          _model.tagInputEditTextController
-                                              ?.clear();
-                                          _model
-                                              .documentacaoInputEditTextController
-                                              ?.clear();
-                                          _model
-                                              .fabricanteInputEditTextController
-                                              ?.clear();
-                                          _model
-                                              .fornecedorInputEditTextController
-                                              ?.clear();
-                                        });
-                                        setState(() {
-                                          _model
-                                              .prontuTipoDocDropDownValueController
-                                              ?.reset();
-                                          _model
-                                              .prontuStatusDropDownValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownCreateEquipPlantaValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownCreateEquipAreaValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownCreateEquipUnidadeValueController
-                                              ?.reset();
-                                          _model.tipoDropDownValueController
-                                              ?.reset();
-                                          _model.statusDropDownValueController
-                                              ?.reset();
-                                          _model.tipoDropDownEditValueController
-                                              ?.reset();
-                                          _model
-                                              .statusDropDownEditValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownEditEquipPlantaValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownEditEquipUnidadeValueController
-                                              ?.reset();
-                                          _model
-                                              .dropDownEditEquipAreaValueController
-                                              ?.reset();
-                                        });
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          FaIcon(
-                                            FontAwesomeIcons.timesCircle,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 26.0,
-                                          ),
-                                          Text(
-                                            'Cancelar',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                    if (!(_model.editar ? false : true))
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          setState(() {
+                                            _model.editar = false;
+                                            _model.area = '';
+                                            _model.unidade = '';
+                                            _model.planta = null;
+                                          });
+                                          setState(() {
+                                            _model
+                                                .prontuarioEquipaInputTextController
+                                                ?.clear();
+                                            _model
+                                                .prontuarioTipoEquipaInputTextController
+                                                ?.clear();
+                                            _model
+                                                .prontuIdentificacaoInputTextController
+                                                ?.clear();
+                                            _model
+                                                .prontuAnoDocInputTextController
+                                                ?.clear();
+                                            _model
+                                                .nameInputCreateEquipTextController
+                                                ?.clear();
+                                            _model
+                                                .documentacaoInputTextController
+                                                ?.clear();
+                                            _model.fabricanteInputTextController
+                                                ?.clear();
+                                            _model.fornecedorInputTextController
+                                                ?.clear();
+                                            _model.nameInputEditTextController
+                                                ?.clear();
+                                            _model
+                                                .documentacaoInputEditTextController
+                                                ?.clear();
+                                            _model
+                                                .fabricanteInputEditTextController
+                                                ?.clear();
+                                            _model
+                                                .fornecedorInputEditTextController
+                                                ?.clear();
+                                          });
+                                          setState(() {
+                                            _model
+                                                .prontuTipoDocDropDownValueController
+                                                ?.reset();
+                                            _model
+                                                .prontuStatusDropDownValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownCreateEquipPlantaValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownCreateEquipAreaValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownCreateEquipUnidadeValueController
+                                                ?.reset();
+                                            _model.tipoDropDownValueController
+                                                ?.reset();
+                                            _model.statusDropDownValueController
+                                                ?.reset();
+                                            _model
+                                                .tipoDropDownEditValueController
+                                                ?.reset();
+                                            _model
+                                                .statusDropDownEditValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownEditEquipPlantaValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownEditEquipUnidadeValueController
+                                                ?.reset();
+                                            _model
+                                                .dropDownEditEquipAreaValueController
+                                                ?.reset();
+                                          });
+                                          if (Navigator.of(context).canPop()) {
+                                            context.pop();
+                                          }
+                                          context.pushNamed('Equipamentos');
+                                        },
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FaIcon(
+                                              FontAwesomeIcons.timesCircle,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 26.0,
+                                            ),
+                                            Text(
+                                              'Cancelar',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
                                       ),
-                                    ),
                                   if (!(_model.prontuarioModal ? false : true))
                                     InkWell(
                                       splashColor: Colors.transparent,
@@ -9399,18 +9400,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoOutros!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeOUTROSRecordData(
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoOutros !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoOutros!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeOUTROSRecordData(
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   if (_model
                                                                           .tipoDropDownEditValue ==
@@ -9429,18 +9434,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoTanque!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeTANQUESRecordData(
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoTanque !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoTanque!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeTANQUESRecordData(
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   if (_model
                                                                           .tipoDropDownEditValue ==
@@ -9459,18 +9468,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoCald!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeCALDSRecordData(
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoCald !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoCald!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeCALDSRecordData(
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   if (_model
                                                                           .tipoDropDownEditValue ==
@@ -9489,18 +9502,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoTubCald!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeTUBCALDSRecordData(
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoTubCald !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoTubCald!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeTUBCALDSRecordData(
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   if (_model
                                                                           .tipoDropDownEditValue ==
@@ -9519,18 +9536,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoTubVP!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeTubVPRecordData(
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoTubVP !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoTubVP!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeTubVPRecordData(
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   if (_model
                                                                           .tipoDropDownEditValue ==
@@ -9549,18 +9570,22 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    await _model
-                                                                        .editEquipRetornoVP!
-                                                                        .reference
-                                                                        .update(
-                                                                            createAplicabilidadeVpRecordData(
-                                                                      tagEquipamento: _model
-                                                                          .tagInputEditTextController
-                                                                          .text,
-                                                                      serieEquipamento: _model
-                                                                          .serieInputEditTextController
-                                                                          .text,
-                                                                    ));
+                                                                    if (_model
+                                                                            .editEquipRetornoVP !=
+                                                                        null) {
+                                                                      await _model
+                                                                          .editEquipRetornoVP!
+                                                                          .reference
+                                                                          .update(
+                                                                              createAplicabilidadeVpRecordData(
+                                                                        tagEquipamento: _model
+                                                                            .tagInputEditTextController
+                                                                            .text,
+                                                                        serieEquipamento: _model
+                                                                            .serieInputEditTextController
+                                                                            .text,
+                                                                      ));
+                                                                    }
                                                                   }
                                                                   setState(() {
                                                                     _model
@@ -9603,6 +9628,14 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                                     _model.editar =
                                                                         false;
                                                                   });
+                                                                  if (Navigator.of(
+                                                                          context)
+                                                                      .canPop()) {
+                                                                    context
+                                                                        .pop();
+                                                                  }
+                                                                  context.pushNamed(
+                                                                      'Equipamentos');
                                                                   setState(
                                                                       () {});
                                                                 },
