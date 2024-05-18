@@ -123,9 +123,7 @@ class _SlideWidgetState extends State<SlideWidget>
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    Navigator.pop(context);
-                                  },
+                                  onTap: () async {},
                                   child: Text(
                                     'BEM-VINDO, ${currentUserDisplayName}!',
                                     textAlign: TextAlign.center,
