@@ -80,24 +80,6 @@ class _SlideWidgetState extends State<SlideWidget>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 829.0,
-          height: MediaQuery.sizeOf(context).width < 1025.0
-              ? 330.0
-              : () {
-                  if (_model.bloco1) {
-                    return 250.0;
-                  } else if (_model.bloco2) {
-                    return 250.0;
-                  } else if (_model.bloco3) {
-                    return 250.0;
-                  } else if (_model.bloco4) {
-                    return 250.0;
-                  } else if (_model.concluido) {
-                    return 250.0;
-                  } else {
-                    return 280.0;
-                  }
-                }(),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: BorderRadius.only(
@@ -141,9 +123,7 @@ class _SlideWidgetState extends State<SlideWidget>
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    Navigator.pop(context);
-                                  },
+                                  onTap: () async {Navigator.pop(context);},
                                   child: Text(
                                     'BEM-VINDO, ${currentUserDisplayName}!',
                                     textAlign: TextAlign.center,

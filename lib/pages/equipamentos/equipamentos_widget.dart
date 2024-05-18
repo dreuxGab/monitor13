@@ -1528,11 +1528,102 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                if (!_model.modalCriar &&
-                                    (_model.editar == false) &&
-                                    (_model.prontuarioModal == false) &&
-                                    (_model.adHocModal == false) &&
-                                    !_model.showInsp)
+                                if (responsiveVisibility(
+                                  context: context,
+                                  tablet: false,
+                                  tabletLandscape: false,
+                                  desktop: false,
+                                ))
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 20.0, 18.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  3.0, 0.0, 0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              if (responsiveVisibility(
+                                                context: context,
+                                                tablet: false,
+                                                tabletLandscape: false,
+                                                desktop: false,
+                                              ))
+                                                Text(
+                                                  'Filtros',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          tablet: false,
+                                          tabletLandscape: false,
+                                          desktop: false,
+                                        ))
+                                          Switch.adaptive(
+                                            value: _model
+                                                    .switchEquipFiltrosValue ??=
+                                                MediaQuery.sizeOf(context)
+                                                            .width >
+                                                        1023.0
+                                                    ? true
+                                                    : false,
+                                            onChanged: (newValue) async {
+                                              setState(() => _model
+                                                      .switchEquipFiltrosValue =
+                                                  newValue!);
+                                            },
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            activeTrackColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .accent1,
+                                            inactiveTrackColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            inactiveThumbColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                          ),
+                                      ].divide(SizedBox(height: 10.0)),
+                                    ),
+                                  ),
+                                if ((!_model.modalCriar &&
+                                        (_model.editar == false) &&
+                                        (_model.prontuarioModal == false) &&
+                                        (_model.adHocModal == false) &&
+                                        !_model.showInsp &&
+                                        valueOrDefault<bool>(
+                                          _model.switchEquipFiltrosValue,
+                                          true,
+                                        )) ||
+                                    valueOrDefault<bool>(
+                                      _model.switchEquipFiltrosValue,
+                                      false,
+                                    ))
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         18.0, 30.0, 18.0, 20.0),
