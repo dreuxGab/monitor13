@@ -25,6 +25,13 @@ class FFAppState extends ChangeNotifier {
       _contrato = prefs.getString('ff_contrato') ?? _contrato;
     });
     _safeInit(() {
+      _contratoNomeEmpresa =
+          prefs.getString('ff_contratoNomeEmpresa') ?? _contratoNomeEmpresa;
+    });
+    _safeInit(() {
+      _contratoNome = prefs.getString('ff_contratoNome') ?? _contratoNome;
+    });
+    _safeInit(() {
       _isLightMode = prefs.getBool('ff_isLightMode') ?? _isLightMode;
     });
     _safeInit(() {
@@ -910,12 +917,14 @@ class FFAppState extends ChangeNotifier {
   String get contratoNomeEmpresa => _contratoNomeEmpresa;
   set contratoNomeEmpresa(String _value) {
     _contratoNomeEmpresa = _value;
+    prefs.setString('ff_contratoNomeEmpresa', _value);
   }
 
   String _contratoNome = '';
   String get contratoNome => _contratoNome;
   set contratoNome(String _value) {
     _contratoNome = _value;
+    prefs.setString('ff_contratoNome', _value);
   }
 
   DocumentReference? _lvEditRetornodoAPpStatePAGESTREFFFF;
@@ -1061,7 +1070,8 @@ class FFAppState extends ChangeNotifier {
   }
 
   DocumentReference? _editAplicabilidadeCaldeira;
-  DocumentReference? get editAplicabilidadeCaldeira => _editAplicabilidadeCaldeira;
+  DocumentReference? get editAplicabilidadeCaldeira =>
+      _editAplicabilidadeCaldeira;
   set editAplicabilidadeCaldeira(DocumentReference? _value) {
     _editAplicabilidadeCaldeira = _value;
   }
