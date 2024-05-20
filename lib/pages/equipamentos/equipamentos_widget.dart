@@ -1681,7 +1681,7 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                                       FormFieldController<
                                                           String>(
                                                     _model.dropDownValue1 ??=
-                                                        'Vaso de Pressão',
+                                                        '',
                                                   ),
                                                   options: [
                                                     'Vaso de Pressão',
@@ -2808,33 +2808,56 @@ class _EquipamentosWidgetState extends State<EquipamentosWidget>
                                               equipamentosRecord
                                                   .where(
                                                     'Contrato',
-                                                    isEqualTo:
-                                                        FFAppState().contrato,
+                                                    isEqualTo: FFAppState()
+                                                                .contrato !=
+                                                            ''
+                                                        ? FFAppState().contrato
+                                                        : null,
                                                   )
                                                   .where(
                                                     'Tipo',
                                                     isEqualTo:
-                                                        _model.dropDownValue1,
+                                                        _model.dropDownValue1 !=
+                                                                ''
+                                                            ? _model
+                                                                .dropDownValue1
+                                                            : null,
                                                   )
                                                   .where(
                                                     'Status',
                                                     isEqualTo:
-                                                        _model.dropDownValue2,
+                                                        _model.dropDownValue2 !=
+                                                                ''
+                                                            ? _model
+                                                                .dropDownValue2
+                                                            : null,
                                                   )
                                                   .where(
                                                     'Planta',
                                                     isEqualTo:
-                                                        _model.dropDownValue3,
+                                                        _model.dropDownValue3 !=
+                                                                ''
+                                                            ? _model
+                                                                .dropDownValue3
+                                                            : null,
                                                   )
                                                   .where(
                                                     'Area',
                                                     isEqualTo:
-                                                        _model.dropDownValue4,
+                                                        _model.dropDownValue4 !=
+                                                                ''
+                                                            ? _model
+                                                                .dropDownValue4
+                                                            : null,
                                                   )
                                                   .where(
                                                     'Unidade',
                                                     isEqualTo:
-                                                        _model.dropDownValue5,
+                                                        _model.dropDownValue5 !=
+                                                                ''
+                                                            ? _model
+                                                                .dropDownValue5
+                                                            : null,
                                                   )
                                                   .orderBy('created_time',
                                                       descending: true),

@@ -68,8 +68,8 @@ class UsersModel extends FlutterFlowModel<UsersWidget> {
   final telefoneInputMask = MaskTextInputFormatter(mask: '(##) # ####-####');
   String? Function(BuildContext, String?)? telefoneInputTextControllerValidator;
   // State field(s) for role_DropDown widget.
-  String? roleDropDownValue;
-  FormFieldController<String>? roleDropDownValueController;
+  String? roleDropDownNValue;
+  FormFieldController<String>? roleDropDownNValueController;
   // State field(s) for Checkbox widget.
 
   Map<ContratosRecord, bool> checkboxValueMap1 = {};
@@ -114,6 +114,17 @@ class UsersModel extends FlutterFlowModel<UsersWidget> {
 
   // State field(s) for Switch_edit widget.
   bool? switchEditValue;
+
+
+  List<String> contratosKeys = [];
+  void addToContratosKeys(String item) => contratosKeys.add(item);
+  void removeFromContratosKeys(String item) => contratosKeys.remove(item);
+  void removeAtIndexFromContratosKeys(int index) =>
+      contratosKeys.removeAt(index);
+  void insertAtIndexInContratosKeys(int index, String item) =>
+      contratosKeys.insert(index, item);
+  void updateContratosKeysAtIndex(int index, Function(String) updateFn) =>
+      contratosKeys[index] = updateFn(contratosKeys[index]);
 
   @override
   void initState(BuildContext context) {

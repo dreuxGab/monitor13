@@ -1119,7 +1119,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                                 ?.clear();
                                           });
                                           setState(() {
-                                            _model.roleDropDownValueController
+                                            _model.roleDropDownNValueController
                                                 ?.reset();
                                             _model
                                                 .roleDropDownEditValueController
@@ -1174,7 +1174,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                               ?.clear();
                                         });
                                         setState(() {
-                                          _model.roleDropDownValueController
+                                          _model.roleDropDownNValueController
                                               ?.reset();
                                         });
                                         setState(() {
@@ -1591,8 +1591,8 @@ class _UsersWidgetState extends State<UsersWidget>
                                                 )
                                                 .where(
                                                   'Contratos',
-                                                  arrayContains: FFAppState()
-                                                      .saveNameContrato,
+                                                  arrayContains:
+                                                      FFAppState().contrato,
                                                 ),
                                       ),
                                       builder: (context, snapshot) {
@@ -2417,6 +2417,115 @@ class _UsersWidgetState extends State<UsersWidget>
                                                         ),
                                                   ),
                                                 ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    20.0),
+                                                        child: Text(
+                                                          'Tipo:',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    FlutterFlowDropDown<String>(
+                                                      controller: _model
+                                                              .roleDropDownNValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.roleDropDownNValue ??=
+                                                            '',
+                                                      ),
+                                                      options:
+                                                          List<String>.from([
+                                                        'ADM',
+                                                        'OPERADOR 2',
+                                                        'OPERADOR 1'
+                                                      ]),
+                                                      optionLabels: [
+                                                        'ADM',
+                                                        'OPERADOR 2',
+                                                        'OPERADOR 1',
+                                                      ],
+                                                      onChanged: (val) =>
+                                                          setState(() => _model
+                                                                  .roleDropDownNValue =
+                                                              val),
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      height: 50.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintText: 'Selecione',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 2.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  4.0,
+                                                                  16.0,
+                                                                  4.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    ),
+                                                  ],
+                                                ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -2429,7 +2538,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: '*Nome:',
+                                                      labelText: 'Nome:',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2560,7 +2669,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: '*E-mail:',
+                                                      labelText: 'E-mail:',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2817,88 +2926,6 @@ class _UsersWidgetState extends State<UsersWidget>
                                                     ],
                                                   ),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 20.0),
-                                                    child: Text(
-                                                      '*Tipo:',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .roleDropDownValueController ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'ADM',
-                                                    'OPERADOR 2',
-                                                    'OPERADOR 1'
-                                                  ],
-                                                  onChanged: (val) => setState(
-                                                      () => _model
-                                                              .roleDropDownValue =
-                                                          val),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  height: 50.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            fontSize: 18.0,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  hintText: 'Selecione',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 2.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 4.0, 16.0, 4.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: true,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
-                                                ),
                                                 StreamBuilder<
                                                     List<ContratosRecord>>(
                                                   stream: queryContratosRecord(
@@ -2960,7 +2987,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              '*Contratos: ',
+                                                              'Contratos:',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -3045,9 +3072,18 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                                 (newValue) async {
                                                                               setState(() => _model.checkboxValueMap1[contratosUserCreateItem] = newValue!);
                                                                               if (newValue!) {
+                                                                                _model.contratoKey = await queryContratosRecordOnce(
+                                                                                  queryBuilder: (contratosRecord) => contratosRecord.where(
+                                                                                    'Nome',
+                                                                                    isEqualTo: contratosUserCreateItem.nome,
+                                                                                  ),
+                                                                                  singleRecord: true,
+                                                                                ).then((s) => s.firstOrNull);
                                                                                 setState(() {
                                                                                   _model.addToContratosList(contratosUserCreateItem.nome);
+                                                                                  _model.addToContratosKeys(contratosUserCreateItem.chave);
                                                                                 });
+                                                                                setState(() {});
                                                                               } else {
                                                                                 setState(() {
                                                                                   _model.removeFromContratosList(contratosUserCreateItem.nome);
@@ -3087,7 +3123,7 @@ class _UsersWidgetState extends State<UsersWidget>
                                                             .fromSTEB(5.0, 20.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '*Selecionados:',
+                                                      'Selecionados:',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: FlutterFlowTheme
@@ -3400,41 +3436,24 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                           '') ||
                                                                   (_model.emailInputTextController.text ==
                                                                           null ||
-                                                                      _model.emailInputTextController.text ==
+                                                                      _model.emailInputTextController
+                                                                              .text ==
                                                                           '') ||
-                                                                  (_model.roleDropDownValue ==
+                                                                  (_model.roleDropDownNValue ==
                                                                           null ||
-                                                                      _model.roleDropDownValue ==
+                                                                      _model.roleDropDownNValue ==
                                                                           '') ||
-                                                                  (_model.contratosList
-                                                                              .first ==
+                                                                  (_model.senhaInputTextController.text ==
                                                                           null ||
-                                                                      _model.contratosList
-                                                                              .first ==
+                                                                      _model.senhaInputTextController.text ==
                                                                           '') ||
+                                                                  (_model.contratosKeys
+                                                                          .length ==
+                                                                      0) ||
                                                                   (_model.switchValue ==
                                                                       null))
                                                               ? null
                                                               : () async {
-                                                                  _model.contratoKey =
-                                                                      await queryContratosRecordOnce(
-                                                                    queryBuilder:
-                                                                        (contratosRecord) =>
-                                                                            contratosRecord.where(
-                                                                      'Nome',
-                                                                      isEqualTo: _model
-                                                                          .contratosList
-                                                                          .first,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  setState(() {
-                                                                    _model.addToContratosList(_model
-                                                                        .contratoKey!
-                                                                        .chave);
-                                                                  });
                                                                   await actions
                                                                       .novoUser(
                                                                     _model
@@ -3457,13 +3476,13 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       _model
-                                                                          .roleDropDownValue,
+                                                                          .roleDropDownNValue,
                                                                       'OPERADOR 1',
                                                                     ),
                                                                     FFAppState()
                                                                         .contratoNomeEmpresa,
                                                                     _model
-                                                                        .contratosList
+                                                                        .contratosKeys
                                                                         .toList(),
                                                                     valueOrDefault<
                                                                         String>(
@@ -3480,18 +3499,18 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                         .nomeInputTextController
                                                                         ?.clear();
                                                                     _model
-                                                                        .emailInputTextController
-                                                                        ?.clear();
-                                                                    _model
                                                                         .telefoneInputTextController
                                                                         ?.clear();
                                                                     _model
                                                                         .senhaInputTextController
                                                                         ?.clear();
+                                                                    _model
+                                                                        .emailInputTextController
+                                                                        ?.clear();
                                                                   });
                                                                   setState(() {
                                                                     _model
-                                                                        .roleDropDownValueController
+                                                                        .roleDropDownNValueController
                                                                         ?.reset();
                                                                   });
                                                                   setState(() {
@@ -3502,9 +3521,6 @@ class _UsersWidgetState extends State<UsersWidget>
                                                                     _model.contratosList =
                                                                         [];
                                                                   });
-
-                                                                  setState(
-                                                                      () {});
                                                                 },
                                                           text: 'Salvar',
                                                           options:
